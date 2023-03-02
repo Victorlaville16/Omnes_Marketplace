@@ -1,0 +1,462 @@
+<!DOCTYPE html> 
+<head> 
+<title>Projet WEB</title> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/fad59fd69b.js" crossorigin="anonymous"></script>
+<meta charset="utf-8" /> 
+<link href="prime.css" rel="stylesheet" type="text/css"/> 
+
+
+<style type="text/css">
+
+    body{
+        background-image: url("background.gif");
+    }
+
+
+    #wrapper{
+
+        width: auto;
+        margin: 0 auto;
+        min-width: 680px;
+        padding-left: 0px;
+        border: solid;
+
+    }
+
+    #header{
+        float: left;
+        margin: 0 auto;
+        height: 10%;
+        width: 100%;
+    }
+
+
+    #titre{
+        padding-left: 5%;
+        padding-top: 20px;
+        float: left;
+        width: 60%;
+        height: 200px;
+        background-color: rgb(211,211,211);
+         }
+    
+    #logo{
+        float: left;
+        padding-top: 20px;
+        padding-left: 8.1%;
+        width: 25%;
+        height: 200px;
+        background-color: rgb(211,211,211);
+
+    }
+
+nav{
+    width: 100%;
+    margin: 0 auto;
+    background-color: grey;
+    float: left;
+    top: 10%;
+
+}
+nav a{
+    display: block;
+    text-decoration: none;
+    color: black;
+    border-bottom: 2px solid transparent;
+    padding: 10px 0px;
+}
+
+nav a:hover{
+    color: rgb(0, 194, 203);
+    border-bottom: 2px;
+}
+    nav ul{
+        list-style-type: none;
+    }
+    nav li{
+        float: left;
+        width: 20%;
+        text-align: center;
+
+    }
+
+
+    nav ul::after{
+        content:"";
+        display: table;
+        clear: both;
+    }
+
+
+
+     #content {
+        float: left;
+        width: 100%;
+        padding-left:5%;
+     
+  
+        height: auto;
+
+    }
+    #texteFooter{
+        font-size: 20px;
+        padding-top: 4%;
+        width: 60%;
+        float: left;
+        padding-left: 20%;
+    }
+    #footer{
+        width: 100%;
+        float: left;
+        background-color: rgb(211,211,211);
+        text-align: center;
+    }
+    #carte{
+        float: right;
+        padding-right: 5%;
+    }
+
+    #ToutParcourir{
+
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+
+
+    }
+    * {
+  box-sizing: border-box;
+  scrollbar-color: transparent transparent; /* thumb and track color */
+  scrollbar-width: 0px;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: transparent;
+  border: none;
+}
+
+* {
+  -ms-overflow-style: none;
+}
+
+ol, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel {
+    width: 40%;
+    height: 20%;
+  padding-top: 25%;
+  filter: drop-shadow(0 0 10px #0003);
+  perspective: 100px;
+}
+.carousel2 {
+    width: 40%;
+    height: 20%;
+  position: relative;
+  float: left;
+  padding-top: 25%;
+  perspective: 100px;
+}
+
+.carousel__viewport {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  overflow-x: scroll;
+  counter-reset: item;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+
+
+.carousel__viewport:hover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  overflow-x: scroll;
+  counter-reset: item;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  color: red;
+}
+
+.carousel__slide {
+  position: relative;
+  flex: 0 0 100%;
+  width: 100%;
+  counter-increment: item;
+}
+
+
+.carousel__snapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 95%;
+  scroll-snap-align: center;
+}
+.carousel__snapper:hover{
+position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 95%;
+  scroll-snap-align: center;
+  color: red;
+}
+
+@media (hover: hover) {
+  .carousel__snapper {
+    color: red;
+    animation-name: tonext, snap;
+    animation-timing-function: ease;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+  }
+
+  .carousel__slide:last-child .carousel__snapper {
+    animation-name: tostart, snap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel__snapper {
+    animation-name: none;
+  }
+}
+
+.carousel:hover .carousel__snapper,
+.carousel:focus-within .carousel__snapper {
+  animation-name: none;
+}
+
+.carousel__navigation {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+
+.carousel__navigation-list,
+.carousel__navigation-item {
+  display: inline-block;
+}
+
+.carousel__navigation-button {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #333;
+  background-clip: content-box;
+  border: 0.25rem solid transparent;
+  border-radius: 50%;
+  font-size: 0;
+  transition: transform 0.1s;
+}
+
+
+
+
+</style>
+</head> 
+<body> 
+<div id="wrapper">
+    <div id="header">
+        <img src="titre+logo.png" alt="" width="100%" height="10%">
+
+        <!--<div id="titre"><img src="titre2.png" alt="javalogo" height="200" width="700"></div>
+
+    <div id="logo"><img src="logo.png" alt="javalogo" height="150" width="150"></div>-->
+</div>
+
+<nav>
+    <ul>
+      <!--  <li><i class="fa-solid fa-shop"></i></li>-->
+      <li><a href="#"><big>Acceuil</a></li>
+        <li><a href="#">Tout Parcourir</a></li>
+        <li><a href="#">Notifications</a></li>
+        <li><a href="#">Panier</a></li>
+        <li><a href="#">Votre Compte</a></li></big>
+    </ul> 
+</nav>
+
+<div id="content">
+<div id="ToutParcourir">
+    <h1>Tout Parcourir</h1>
+</div>
+    <img src="PhotoVoiture1.jpg" alt="javalogo" height="300" width="450">
+
+
+
+
+
+    <h1>Présentation</h1>
+
+    <p>Bienvenue sur la page d'acceuil de notre site de vente en ligne de voiture neuf ou occasion</p>
+
+    <section class="carousel" aria-label="Gallery">
+  <ol class="carousel__viewport">
+    <li id="carousel__slide1"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper">
+       <!-- <img src="voiture1.png" width="100%" height="100%">-->
+         <!--<a href="#carousel__slide4"
+           class="carousel__prev">Go to last slide</a>
+        <a href="#carousel__slide2"
+           class="carousel__next">Go to next slide</a>-->
+      </div>
+    </li>
+    <li id="carousel__slide2"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper"> <img src="twingo2.png" width="100%" height="100%" ></div>
+    <!--  <a href="#carousel__slide1"
+         class="carousel__prev">Go to previous slide</a>
+      <a href="#carousel__slide3"
+         class="carousel__next">Go to next slide</a>-->
+    </li>
+    <li id="carousel__slide3"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper"> <img src="twingo3.jpg" width="100%" height="100%"></div>
+    <!--  <a href="#carousel__slide2"
+         class="carousel__prev">Go to previous slide</a>
+      <a href="#carousel__slide4"
+         class="carousel__next">Go to next slide</a>-->
+    </li>
+    <li id="carousel__slide4"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper"><img src="twingo4.jpg" width="100%" height="100%"></div>
+    <!--  <a href="#carousel__slide3"
+         class="carousel__prev">Go to previous slide</a>
+      <a href="#carousel__slide1"
+         class="carousel__next">Go to first slide</a>-->
+    </li>
+  </ol>
+  <aside class="carousel__navigation">
+    <ol class="carousel__navigation-list">
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide1"
+           class="carousel__navigation-button">Go to slide 1</a>
+      </li>
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide2"
+           class="carousel__navigation-button">Go to slide 2</a>
+      </li>
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide3"
+           class="carousel__navigation-button">Go to slide 3</a>
+      </li>
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide4"
+           class="carousel__navigation-button">Go to slide 4</a>
+      </li>
+    </ol>
+  </aside>
+</section>
+
+
+
+    <section class="carousel2" aria-label="Gallery">
+  <ol class="carousel__viewport">
+    <li id="carousel__slide5"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper">
+        <img src="megane1.jpg" width="100%" height="100%">
+         <!--<a href="#carousel__slide4"
+           class="carousel__prev">Go to last slide</a>
+        <a href="#carousel__slide2"
+           class="carousel__next">Go to next slide</a>-->
+      </div>
+    </li>
+    <li id="carousel__slide6"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper"> <img src="megane2.png" width="100%" height="100%" ></div>
+    <!--  <a href="#carousel__slide1"
+         class="carousel__prev">Go to previous slide</a>
+      <a href="#carousel__slide3"
+         class="carousel__next">Go to next slide</a>-->
+    </li>
+    <li id="carousel__slide7"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper"> <img src="megane3.jpg" width="100%" height="100%"></div>
+    <!--  <a href="#carousel__slide2"
+         class="carousel__prev">Go to previous slide</a>
+      <a href="#carousel__slide4"
+         class="carousel__next">Go to next slide</a>-->
+    </li>
+    <li id="carousel__slide8"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper"><img src="megane4.jpg" width="100%" height="100%"></div>
+    <!--  <a href="#carousel__slide3"
+         class="carousel__prev">Go to previous slide</a>
+      <a href="#carousel__slide1"
+         class="carousel__next">Go to first slide</a>-->
+    </li>
+  </ol>
+  <aside class="carousel__navigation">
+    <ol class="carousel__navigation-list">
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide5"
+           class="carousel__navigation-button">Go to slide 1</a>
+      </li>
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide6"
+           class="carousel__navigation-button">Go to slide 2</a>
+      </li>
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide7"
+           class="carousel__navigation-button">Go to slide 3</a>
+      </li>
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide8"
+           class="carousel__navigation-button">Go to slide 4</a>
+      </li>
+    </ol>
+  </aside>
+</section>
+  
+    
+</div>
+
+<div id="footer">
+    <div id="texteFooter">Copyright &copy; 2023, Omnes MarketPlace<br /> 
+<p>Coordonnées : -
+ <a href="mailto:contact-OmnesMarketPlace@gmail.com">contact-OmnesMarketPlace@gmail.com </a> 
+ <br>
+- 04 78 95 62 31</p></div>
+<div id="carte"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2623.3144844008166!2d2.2793500032437124!3d48.89034349361312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66f87a70f65d9%3A0xbc442e671fa31e6a!2s71%20Rue%20Chaptal%2C%2092300%20Levallois-Perret!5e0!3m2!1sfr!2sfr!4v1677602696554!5m2!1sfr!2sfr" width="200" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+
+
+</div> 
+</div>
+
+</body> 
+</html>
