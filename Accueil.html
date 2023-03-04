@@ -3,8 +3,33 @@
 <title>Projet WEB</title> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/fad59fd69b.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="SiteWeb.js"></script>
+
 <meta charset="utf-8" /> 
 <link rel="stylesheet" href="style.css" type = "text/css" />
+<script>
+    const select = document.getElementById("choix");
+            select.addEventListener('change', function () {
+                var valeur = select.options[select.selectedIndex].value;
+                valeur = parseInt(valeur);
+                 
+                switch (valeur) {
+                    case 1:
+                        changeURL("AccueilVoiture.html");
+                        break;
+                    case 2:
+                        changeURL("AccueilMoto.html");
+                        break;
+                    default:
+                        console.log('default');
+                }
+ 
+            });
+             
+            function changeURL(url) {
+                document.location.href = url;
+            }
+</script>
 
 
 </head> 
@@ -17,16 +42,29 @@
 <nav>
     <ul>
       <!--  <li><i class="fa-solid fa-shop"></i></li>-->
-      <li><a href="Accueil.html"><big>Acceuil</a></li>
+      <li><a href="Accueil.html"><big><font color="#00C2CB">Acceuil</font></a></li>
         <li><a href="ToutParcourir.html">Tout Parcourir</a></li>
         <li><a href="Notifications.html">Notifications</a></li>
-        <li><a href="#">Panier</a></li>
+        <li><a href="VotreSelection.html">Panier</a></li>
         <li><a href="#">Votre Compte</a></li></big>
     </ul> 
 </nav>
 
 <div id="content">
-    <option value="Selection moto"><a href="AccueilMoto.html">Selection moto</a></option>
+
+    <form action="" method="post">
+        <label for="choix">Faite votre choix</label>
+          
+    <div class="bloc">
+  <div class="select">
+    <select name="choix" id="choix">
+    <option value="1" selected> Selection Voiture</option>
+      <option value="2"><a href="AccueilMoto.html">Selection Moto</a></option>
+</select>
+</div>
+</div>
+</form>
+
     <h1 class="PremierTitre">Selection du jour Voiture</h1>
 
     <div class="slider">
