@@ -21,11 +21,12 @@
 <nav>
     <ul>
       <!--  <li><i class="fa-solid fa-shop"></i></li>-->
-      <li><a href="Accueil.html"><big>Acceuil</a></li>
-        <li><a href="ToutParcourir.html"><font color="#00C2CB">Tout Parcourir</font></a></li>
-        <li><a href="Notifications.html">Notifications</a></li>
-        <li><a href="VotreSelection.html">Panier</a></li>
-        <li><a href="#">Votre Compte</a></li></big>
+
+      <li><a href="Accueil.php"><big>Acceuil</a></li>
+        <li><a href="ToutParcourir.php"><font color="#00C2CB">Tout Parcourir</font></a></li>
+        <li><a href="Notifications.php">Notifications</a></li>
+        <li><a href="#">Panier</a></li>
+        <li><a href="votreCompte.php">Votre Compte</a></li></big>
     </ul> 
 </nav>
 

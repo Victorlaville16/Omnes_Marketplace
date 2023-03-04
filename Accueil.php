@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html> 
 <head> 
 <title>Projet WEB</title> 
@@ -42,11 +43,13 @@
 <nav>
     <ul>
       <!--  <li><i class="fa-solid fa-shop"></i></li>-->
-      <li><a href="Accueil.html"><big><font color="#00C2CB">Acceuil</font></a></li>
-        <li><a href="ToutParcourir.html">Tout Parcourir</a></li>
-        <li><a href="Notifications.html">Notifications</a></li>
-        <li><a href="VotreSelection.html">Panier</a></li>
-        <li><a href="#">Votre Compte</a></li></big>
+
+
+      <li><a href="Accueil.php"><big><font color="#00C2CB">Acceuil</font></a></li>
+        <li><a href="ToutParcourir.php">Tout Parcourir</a></li>
+        <li><a href="Notifications.php">Notifications</a></li>
+        <li><a href="#">Panier</a></li>
+        <li><a href="votreCompte.php">Votre Compte</a></li></big>
     </ul> 
 </nav>
 

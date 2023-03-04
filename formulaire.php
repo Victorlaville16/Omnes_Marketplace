@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +7,14 @@
 	<title></title>
 </head>
 <body>
+	<?php include_once('fonctions.php'); 
+		//$nom = recupNom('ben');
+		//$prenom = recupPrenom('ben');
+	?>
+
+	<h3><?php //afficherPhotoProfil('ben'); ?></h3>
+	<h3><?php //echo $nom ." ".$prenom; ?></h3>
+
 	<form action="creationUtilisateur.php" method="post">
 		<table border="1">
 			<tr>
@@ -31,13 +40,15 @@
 			        <option name="selection">Selectionnez votre type de compte</option>
 			        <option value=3>Acheteur</option>
 			        <option value=2>Vendeur</option>
-      </select></td>
+      				</select>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
 					<input type="submit" name="submit" value="Valider">
 				</td>
 			</tr>
+
 		</table>
 	</form>
 
