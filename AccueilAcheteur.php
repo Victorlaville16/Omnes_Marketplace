@@ -1,5 +1,4 @@
-<?php session_start();
-//session_destroy(); ?>
+<?php session_start(); ?>
 <!DOCTYPE html> 
 <head> 
 <title>Projet WEB</title> 
@@ -49,7 +48,7 @@
       <li><a href="Accueil.php"><big><font color="#00C2CB">Acceuil</font></a></li>
         <li><a href="ToutParcourir.php">Tout Parcourir</a></li>
         <li><a href="Notifications.php">Notifications</a></li>
-        <li><a href="#">Panier</a></li>
+        <li><a href="VotreSelection.php">Votre Sélection</a></li>
         <li><a href="votreCompte.php">Votre Compte</a></li></big>
     </ul> 
 </nav>

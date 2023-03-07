@@ -1,5 +1,4 @@
-<?php session_start();
-//session_destroy(); ?>
+<?php session_start(); ?>
 <!DOCTYPE html> 
 <head> 
 <title>Projet WEB</title> 

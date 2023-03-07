@@ -3,12 +3,26 @@
     //include('fonctions.php');
 
     if(isset($_SESSION['id'])){
+        if($_SESSION['typeCompte']=='1'){
         // On récupère le type de l'utilisateur : vendeur, acheteur, admin
         /*
         On redirige selon le type vers 
         */
-        header('Location: test.php');
-    }else{
+        header('Location: PageAdmin.php');
+        }
+        if($_SESSION['typeCompte']=='2'){//vendeur 
+
+            header('Location: PageVendeur.php');
+
+
+
+        }
+
+        if($_SESSION['typeCompte']=='3'){//acheteur
+        header('Location: PageAcheteur.php');
+        }
+    }
+else{
 
 
         /*
@@ -21,5 +35,6 @@
         */
         header('Location: PageDeConnexion.php');
     }
+
 
 ?>

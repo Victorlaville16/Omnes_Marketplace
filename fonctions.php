@@ -40,6 +40,15 @@
         return $nom['typeCompte'];
     }
 
+    function getIDUtilisateur(string $identifiant, PDO $db){
+        //Connexion BD
+        //$db = connectBD();
+        $request = $db->prepare("SELECT ID_utilisateur FROM utilisateurs WHERE identifiant = '$identifiant'");
+        $request->execute();
+        $nom = $request->fetch();
+        return $nom['ID_utilisateur'];
+   }
+
     /* Fonction de démarrage d'une session, a besoin de l'identifiant de l'utilisateur*/ 
     
 

@@ -49,7 +49,7 @@
       <li><a href="Accueil.php"><big><font color="#00C2CB">Acceuil</font></a></li>
         <li><a href="ToutParcourir.php">Tout Parcourir</a></li>
         <li><a href="Notifications.php">Notifications</a></li>
-        <li><a href="#">Panier</a></li>
+        <li><a href="DeposerUneAnnonce.php">Déposer une annonce</a></li>
         <li><a href="votreCompte.php">Votre Compte</a></li></big>
     </ul> 
 </nav>

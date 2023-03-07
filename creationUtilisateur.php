@@ -1,5 +1,5 @@
 <?php
-    include('connexionBD.php');
+    include('fonctions.php');
     //Connexion BD
     $db = connectBD();
     // Récupérer les données soumises via le formulaire
@@ -22,13 +22,33 @@
     } else {
         // L'utilisateur n'existe pas, on l'ajoute à la base de données
         $request = $db->prepare ("INSERT INTO utilisateurs (prenom, nom, identifiant, password, typeCompte) 
-                                    VALUES ('$prenom', '$nom', '$username', '$password', '$type')");
+                                    VALUES ('$prenom', '$nom', '$username', '$password', '$type')");          
         $request->execute();
-        
-        $photo = 'user.png';
-        $req = $db->prepare('INSERT INTO utilisateurs (photo) VALUES (?)');
-        $req->execute([$photo]);
+
+        $ID_utilisateur = getIDUtilisateur($username, $db);
+
+
+        if($type==2){
+         $request = $db->prepare ("INSERT INTO vendeurs (ID_utilisateur) 
+                                    VALUES ('$ID_utilisateur')");          
+
+
+         $request->execute();
+        }
+
+        if($type==3){
+            $request = $db->prepare ("INSERT INTO acheteur (ID_utilisateur) 
+            VALUES ('$ID_utilisateur')");          
+
+
+        $request->execute();
+
+        }
+
 
         echo "Votre compte a été créé avec succès.<br>";
+        header('Location: PageDeConnexion.php');
+
+
     }
 ?>
