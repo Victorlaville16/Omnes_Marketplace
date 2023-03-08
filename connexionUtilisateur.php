@@ -26,7 +26,7 @@
         // on vérifie son mdp 
         if($password == $result['password']){
             // Tout est bon, on ouvre sa session
-            $_SESSION['id'] = $username;
+            $_SESSION['ID_utilisateur'] = getIDUtilisateur($username, $db);
             $_SESSION['typeCompte'] = getTypeCompte($username);
             if(getTypeCompte($username)==1){
             // On redirige vers une page ?
@@ -41,6 +41,7 @@
                     // On redirige vers une page ?
                     header('Location: AccueilAcheteur.php');
                     }
+
         }else{
             // Mot de passe incorrect : réaffiche le formulaire
             header('Location: PageDeConnexion.php');

@@ -1,3 +1,5 @@
+<?php session_start() ?>
+
 <!DOCTYPE html> 
 <head> 
 <title>Projet WEB</title> 
@@ -141,7 +143,7 @@ nav a:hover{
 </nav>
 
 <div id="content">
-    <form >
+    <form action="creationVente.php" method="post" enctype="multipart/form-data">
         <tr><br>
             <td>Nom produit</td><br>
             <td><input type="text" name="nom_prod"> </td><br><br>

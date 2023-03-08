@@ -38,6 +38,25 @@
 <div id="wrapper">
     <div id="header">
         <img src="titre+logo1.png" width="100%">
+        <button id="deconnexion"><big>Deconnexion</button>
+        <script>
+            const deconnexion = document.getElementById("deconnexion");
+
+            deconnexion.addEventListener("click", function() {
+            // Envoyer une requête AJAX au serveur pour déconnecter la session
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "deconnexion.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(xhr.responseText);
+                // Recharger la page pour afficher les modifications
+                location.reload();
+                }
+            };
+            xhr.send();
+            });
+</script>
 </div>
 
 <nav>

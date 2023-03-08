@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 
 <?php
     // Fonctions pour récupérer les différentes infos de l'utilisateur pour afficher
@@ -49,9 +48,19 @@
         return $nom['ID_utilisateur'];
    }
 
-    /* Fonction de démarrage d'une session, a besoin de l'identifiant de l'utilisateur*/ 
-    
+   function getIDVendeur(int $ID_utilisateur, PDO $db){
+        $request = $db->prepare("SELECT ID_vendeur FROM vendeurs WHERE ID_utilisateur = '$ID_utilisateur'");
+        $request->execute();
+        $nom = $request->fetch();
+        return $nom['ID_vendeur'];
+   }
 
+        /* Fonction de supression d'un produit, accessible par l'administrateur et le vendeur ?*/ 
+    function deleteProduit(string $id_produit){
+        $db = connectBD();
+        $request = $db->prepare("DELETE FROM produits WHERE ID_produit = $id_produit");
+        $request->execute();
+    }
     function stopSession(){
         // Accède à une variable de session
         echo 'Au revoir ' . $_SESSION['id'] . '!';

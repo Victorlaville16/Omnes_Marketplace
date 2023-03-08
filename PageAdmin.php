@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 include('fonctions.php');
 ?>
@@ -16,16 +17,35 @@ include('fonctions.php');
 <div id="wrapper">
     <div id="header">
         <img src="titre+logo1.png" width="100%">
+        <button id="deconnexion"><big>Deconnexion</button>
+        <script>
+            const deconnexion = document.getElementById("deconnexion");
+
+            deconnexion.addEventListener("click", function() {
+            // Envoyer une requête AJAX au serveur pour déconnecter la session
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "deconnexion.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(xhr.responseText);
+                // Recharger la page pour afficher les modifications
+                location.reload();
+                }
+            };
+            xhr.send();
+            });
+</script>
 </div>
 
 <nav>
     <ul>
       <!--  <li><i class="fa-solid fa-shop"></i></li>-->
-        <li><a href="Accueil.php"><big>Acceuil</a></li>
+        <li><a href="AccueilAdmin.php"><big>Accueil</a></li>
         <li><a href="ToutParcourir.php">Tout Parcourir</a></li>
         <li><a href="Notifications.php">Notifications</a></li>
         <li><a href="VotreSelection.php">Panier</a></li>
-        <li><a href="PageAdmin.php"><font color="#00C2CB">Votre Compte</font></a></li></big>
+        <li><a href="votreCompte.php"><font color="#00C2CB">Votre Compte</font></a></li></big>
     </ul> 
 </nav>
 
@@ -67,9 +87,6 @@ include('fonctions.php');
 
    
 
-
-
-    <button><a href="Accueil.php" <?php session_destroy();?>><big>Deconnexion</a></button>
   
     
 </div>
