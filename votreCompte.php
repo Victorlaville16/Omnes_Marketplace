@@ -8,7 +8,7 @@
         /*
         On redirige selon le type vers 
         */
-        header('Location: PageAdmin.php');
+            header('Location: PageAdmin.php');
         }
         if($_SESSION['typeCompte']=='2'){//vendeur 
 
@@ -26,7 +26,7 @@ else{
 
 
         /*
-        
+
         formulaire de connexion : id et password -> en dessous à côté de submit, bouton créer un compte -> href...
         verif que le compte existe
             -> Si existe pas on le renvoie vers le formulaire de création de compte

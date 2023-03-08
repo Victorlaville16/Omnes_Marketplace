@@ -70,6 +70,12 @@
 	</style>
 </head>
 <body>
+	<?php 
+	 if(isset($_SESSION['id'])){
+		echo $_SESSION['id'];
+	 }
+
+	?>
 
 	<div class="container">
 

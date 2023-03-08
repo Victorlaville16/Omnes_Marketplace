@@ -13,6 +13,18 @@
         border: solid;
 
     }
+    button {
+      position: absolute;
+      top: 10%;
+      left: 93%;
+      transform: translate(-50%, -50%);
+      padding: 10px 20px;
+      border: none;
+      background-color: #010c17;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+    }
 
     #header{
         float: left;

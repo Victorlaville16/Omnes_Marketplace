@@ -26,6 +26,10 @@
         $request->execute();
 
         $ID_utilisateur = getIDUtilisateur($username, $db);
+        $photo = file_get_contents("user.png");
+        $request = $db->prepare ("UPDATE utilisateurs SET photo = ? WHERE ID_utilisateur  = $ID_utilisateur");
+        $request->bindParam(1, $photo, PDO::PARAM_LOB);   
+        $request->execute();
 
 
         if($type==2){

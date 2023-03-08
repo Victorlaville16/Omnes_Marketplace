@@ -26,10 +26,21 @@
         // on vérifie son mdp 
         if($password == $result['password']){
             // Tout est bon, on ouvre sa session
-            $_SESSION['id'] = $username;
+            $_SESSION['ID_utilisateur'] = getIDUtilisateur($username, $db);
             $_SESSION['typeCompte'] = getTypeCompte($username);
             // On redirige vers une page ?
-            header('Location: Accueil.php');
+            if(getTypeCompte($username)==1){
+                //admin
+                header('Location: AccueilAdmin.php');
+            }
+            if(getTypeCompte($username)==2){
+                //vendeur
+                header('Location: AccueilVendeur.php');
+            }
+            if(getTypeCompte($username)==3){
+                //acheteur
+                header('Location: AccueilAcheteur.php');
+            }
         }else{
             // Mot de passe incorrect : réaffiche le formulaire
             header('Location: PageDeConnexion.php');
