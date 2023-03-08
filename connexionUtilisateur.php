@@ -28,8 +28,19 @@
             // Tout est bon, on ouvre sa session
             $_SESSION['id'] = $username;
             $_SESSION['typeCompte'] = getTypeCompte($username);
+            if(getTypeCompte($username)==1){
             // On redirige vers une page ?
-            header('Location: Accueil.php');
+            header('Location: AccueilAdmin.php');
+            } 
+            if(getTypeCompte($username)==2){
+                // On redirige vers une page ?
+                header('Location: AccueilVendeur.php');
+                }
+
+             if(getTypeCompte($username)==3){
+                    // On redirige vers une page ?
+                    header('Location: AccueilAcheteur.php');
+                    }
         }else{
             // Mot de passe incorrect : réaffiche le formulaire
             header('Location: PageDeConnexion.php');
