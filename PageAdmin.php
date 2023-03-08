@@ -30,8 +30,7 @@ include('fonctions.php');
                 if (xhr.readyState === 4 && xhr.status === 200) {
                 console.log(xhr.responseText);
                 // Recharger la page pour afficher les modifications
-                location.reload();
-                }
+                window.location.href="Accueil.php"                }
             };
             xhr.send();
             });
@@ -53,7 +52,7 @@ include('fonctions.php');
     <h1 class="PremierTitre">Bienvenue sur votre compte : <?php 
     
     
-    echo " ".getPrenom($_SESSION['id']) ." ".getNom($_SESSION['id']) ?> </h1>
+    echo " ".getPrenom($_SESSION['ID_utilisateur']) ." ".getNom($_SESSION['ID_utilisateur']) ?> </h1>
 
     
 
@@ -76,13 +75,42 @@ include('fonctions.php');
     <h1>Comptes Existants</h1>
 
     <h2>Vendeur</h2>
-    <p>...</p>
+    <p> Compte : <br>
+    <?php
+    $db = connectBD();
+        $request = $db->prepare("SELECT * FROM utilisateurs WHERE typeCompte = '2'");
+        $request->execute();
+        
 
+        while($resultat=$request->fetch()){
+            echo "-" .$resultat['prenom']. " ".$resultat['nom']. " ". "Adresse mail : ".$resultat['mail'] ;
+            echo "<br>";       }
+
+    ?>
     <h2>Acheteur</h2>
-    <p>...</p>
+    <p> Compte : <br>
+    <?php
+    $db = connectBD();
+        $request = $db->prepare("SELECT * FROM utilisateurs WHERE typeCompte = '3'");
+        $request->execute();
+        
 
-    <h1>Demande de compte</h1>
-    <p>...</p>
+        while($resultat=$request->fetch()){
+            echo "-" .$resultat['prenom']. " ".$resultat['nom']." ". "Adresse mail : ".$resultat['mail'] ;
+            echo "<br>";       }
+
+    ?>
+   
+    <h1>Ajouter / Supprimer des comptes</h1>
+    <p>
+   <a href="formulaire.php">Cliquer ICI pour ajouter des comptes</a>
+    <br>
+    <br>
+    <a href="formulaireSuppression.php">Cliquer ICI pour Supprimer des comptes</a>
+        </p>
+
+
+    
 
 
    

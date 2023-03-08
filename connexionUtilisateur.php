@@ -28,6 +28,8 @@
             // Tout est bon, on ouvre sa session
             $_SESSION['ID_utilisateur'] = getIDUtilisateur($username, $db);
             $_SESSION['typeCompte'] = getTypeCompte($username);
+            $_SESSION['username'] = $username;
+            
             if(getTypeCompte($username)==1){
             // On redirige vers une page ?
             header('Location: AccueilAdmin.php');

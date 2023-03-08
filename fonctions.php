@@ -6,7 +6,7 @@
     function getPrenom(string $identifiant){
         //Connexion BD
         $db = connectBD();
-        $request = $db->prepare("SELECT prenom FROM utilisateurs WHERE identifiant = '$identifiant'");
+        $request = $db->prepare("SELECT prenom FROM utilisateurs WHERE ID_utilisateur = '$identifiant'");
         $request->execute();
         $prenom = $request->fetch();
         return $prenom['prenom'];
@@ -15,7 +15,7 @@
     function getNom(string $identifiant){
         //Connexion BD
         $db = connectBD();
-        $request = $db->prepare("SELECT nom FROM utilisateurs WHERE identifiant = '$identifiant'");
+        $request = $db->prepare("SELECT nom FROM utilisateurs WHERE ID_utilisateur = '$identifiant'");
         $request->execute();
         $nom = $request->fetch();
         return $nom['nom'];
@@ -61,6 +61,27 @@
         $request = $db->prepare("DELETE FROM produits WHERE ID_produit = $id_produit");
         $request->execute();
     }
+
+    function deleteUtilisateur(string $id_utilisateur){
+        $db = connectBD();
+        $request = $db->prepare("DELETE FROM utilisateurs WHERE ID_utilisateur = $id_utilisateur");
+        $request->execute();
+    }
+
+    
+    function deleteAcheterOuVendeur(string $id_utilisateur, int $type){
+        $db = connectBD();
+        if($type==2){
+        $request = $db->prepare("DELETE FROM vendeurs WHERE ID_utilisateur = $id_utilisateur");
+        $request->execute();
+        } 
+        if($type==3){
+            $request = $db->prepare("DELETE FROM acheteur WHERE ID_utilisateur = $id_utilisateur");
+            $request->execute();
+    }
+}
+
+
     function stopSession(){
         // Accède à une variable de session
         echo 'Au revoir ' . $_SESSION['id'] . '!';

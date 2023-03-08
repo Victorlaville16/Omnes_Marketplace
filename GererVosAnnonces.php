@@ -1,15 +1,13 @@
-<?php
-include('fonctions.php');
-?>
-
+<?php session_start(); ?>
 <!DOCTYPE html> 
 <head> 
 <title>Projet WEB</title> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/fad59fd69b.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="SiteWeb.js"></script>
+
 <meta charset="utf-8" /> 
 <link rel="stylesheet" href="style.css" type = "text/css" />
-
 
 </head> 
 <body> 
@@ -29,59 +27,57 @@ include('fonctions.php');
                 if (xhr.readyState === 4 && xhr.status === 200) {
                 console.log(xhr.responseText);
                 // Recharger la page pour afficher les modifications
-                window.location.href="Accueil.php"   ;             }
+                window.location.href="Accueil.php"   ;     
+
                 }
             };
             xhr.send();
             });
 </script>
-</div>
+    </div>
 
 <nav>
     <ul>
       <!--  <li><i class="fa-solid fa-shop"></i></li>-->
-        <li><a href="Accueil.php"><big>Acceuil</a></li>
-        <li><a href="ToutParcourir.php">Tout Parcourir</a></li>
+
+
+      <li><a href="Accueil.php"><big>Acceuil</a></li>
+        <li><a href="ToutParcourirAdmin.php">Tout Parcourir</a></li>
         <li><a href="Notifications.php">Notifications</a></li>
-        <li><a href="VotreSelection.php">Panier</a></li>
-        <li><a href="PageAcheteur.php"><font color="#00C2CB">Votre Compte</font></a></li></big>
+        <li><a href="GererVosAnnonce"><font color="#00C2CB">Gérer Vos Annonces</font></a></li>
+        <li><a href="votreCompte.php">Votre Compte</a></li></big>
     </ul> 
 </nav>
 
 <div id="content">
-    <h1 class="PremierTitre">Bienvenue sur votre compte : <?php 
-    
-    
-    echo " ".getPrenom($_SESSION['id']) ." ".getNom($_SESSION['id']) ?> </h1>
-
-    
 
 
+    <h1>Vos annonces</h1>
 
-    <h1>Articles acheter</h1>
-    <h2>Enchères</h2>
-    <img src="VoitureCollection.jpg" width="20%">
-    <p><font size=5%>Montant actuel de l'enchere : ...</font></p>
+    <?php
+      include('fonctions.php');
+    $db = connectBD();
+    $ID_utilisateur=$_SESSION['ID_utilisateur'];
+
+ $request = $db->prepare("SELECT * FROM vehicules WHERE ID_vendeur = '$ID_utilisateur'");// on verifie que l'id vendeur vaut bien id utilisateur pour récuperer que celle de l'admin
+ $request->execute();
 
 
-    <h2>Achat Immédiat / Vente en négociation</h2>
-    <p><img src="twingo2.jpg" width="20%">
-        <p><font size=5%>Montant : ...</font></p>
 
-    </p>
+        while($resultat=$request->fetch()){
+            echo "-" .$resultat['nom']. " ".$resultat['prix']. " ". "Description : ".$resultat['description'] ;
+            echo "<br>";       }
+
+    ?>
+
+
+  <h1>Ajouter / Supprimer des annonces</h1>
+    <p>
+   <a href="deposer_vendeur.php">Cliquer ICI pour ajouter une annonce</a>
     <br>
-
-    <h1>Comptes Existants</h1>
-
-    <h2>Vendeur</h2>
-    <p>...</p>
-
-    <h2>Acheteur</h2>
-    <p>...</p>
-
-    <h1>Demande de compte</h1>
-    <p>...</p>
-
+    <br>
+    <a href="formulaireSuppression.php">Cliquer ICI pour supprimer une annonce</a>
+        </p>
   
     
 </div>

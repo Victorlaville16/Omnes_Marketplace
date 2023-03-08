@@ -13,12 +13,21 @@
     $image2 = $_FILES['image2'];
     $image3 = $_FILES['image3'];
 
-    //On récupère l'ID Vendeur à partir de l'id utilisateur
-    $ID_vendeur = getIDVendeur($_SESSION['ID_utilisateur'], $db);
+    $ID_utilisateur=$_SESSION['ID_utilisateur'];
+    $username=$_SESSION['username'];
 
-    // L'utilisateur n'existe pas, on l'ajoute à la base de données
+    // Le vehicule n'existe pas, on l'ajoute à la base de données
+    if(getTypeCompte($_SESSION['username'])=='1'){
+        $ID_vendeur =$ID_utilisateur;
+    }
+    
+    //On récupère l'ID Vendeur à partir de l'id utilisateur
+    if(getTypeCompte($_SESSION['username'])=='2'){
+    $ID_vendeur = getIDVendeur($_SESSION['ID_utilisateur'], $db);
+    }        
+    
     $request = $db->prepare ("INSERT INTO vehicules (nom, prix, kilometrage, carburant, description, ID_vendeur) 
-                                VALUES ('$nom', '$prix', '$kilometrage', '$carburant', '$description', '$ID_vendeur')");          
+                                VALUES ('$nom', '$prix', '$kilometrage', '$carburant', '$description', '$ID_vendeur')");
     $request->execute();
 
     $photo_tmp1 = $_FILES['image1']['tmp_name'];
@@ -46,5 +55,8 @@
     $request = $db->prepare("SELECT photo1 FROM vehicules WHERE ID_vendeur = '$ID_vendeur'");
     $request->execute();
     $photo = $request->fetch();
+
+    header('Location: DemonstrationVente.php');
+
     echo '<img src="data:image/jpeg;base64,'.base64_encode( $photo['photo1'] ).'"/>';
 ?>

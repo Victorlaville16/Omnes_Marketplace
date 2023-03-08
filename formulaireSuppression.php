@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Création de Compte</title>
+	<title>Suppression de Compte</title>
 	<style>
 		body {
 			background-color: #f1f1f1;
@@ -74,11 +74,9 @@
 	
 	<div class="container">
 
-			<h1>Création de Compte</h1>
+			<h1>Suppression de Compte</h1>
 
-	<form action="creationUtilisateur.php" method="post">
-			<label for="prenom">Prénom</label>
-			<input type="text" name="prenom" class="form-control" required>
+	<form action="SuppressionUtilisateur.php" method="post">
 
 			<label for="nom">Nom</label>
 			<input type="text"  name="nom" class="form-control" required>
@@ -86,21 +84,12 @@
 			<label for="identifiant">Identifiant</label>
 			<input type="text" name="identifiant" class="form-control" required>
 
-			<label for="password">Mot de Passe</label>
-			<input type="text"  name="password" class="form-control" required>
-
 			<label for="mail">Email</label>
 			<input type="text"  name="mail" class="form-control" required>
 
 
-				<td>Type de compte</td>
-				<td><select name="type">
-			        <option selected value=3>Acheteur</option>
-			        <option value=2>Vendeur</option>
-      				</select>
-				</td>
 			
-			<button type="submit" name="submit" class="btn">Créer</button>
+			<button type="submit" name="submit" class="btn">Supprimer</button>
 	</form>
 
 </body>

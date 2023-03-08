@@ -13,7 +13,7 @@
         border: solid;
 
     }
-    button {
+    #deconnexion { 
       position: absolute;
       top: 10%;
       left: 93%;
@@ -139,10 +139,6 @@ nav a:hover{
     width: 100%;
   }
 }
-    }
-
-
-    }
 
     * {
   box-sizing: border-box;
