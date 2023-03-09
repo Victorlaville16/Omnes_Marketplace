@@ -1,5 +1,5 @@
 <?php session_start();
-//session_destroy(); ?>
+ ?>
 <!DOCTYPE html> 
 <head> 
 <title>Projet WEB</title> 
@@ -65,9 +65,9 @@
       <!--  <li><i class="fa-solid fa-shop"></i></li>-->
 
 
-      <li><a href="Accueil.php"><big><font color="#00C2CB">Accueil</font></a></li>
+      <li><a href="AccueilVendeur.php"><big><font color="#00C2CB">Accueil</font></a></li>
         <li><a href="ToutParcourirVendeur.php">Tout Parcourir</a></li>
-        <li><a href="Notifications.php">Notifications</a></li>
+        <li><a href="NotificationsVendeur.php">Notifications</a></li>
         <li><a href="deposer_vendeur.php">Déposer une annonce</a></li>
         <li><a href="votreCompte.php">Votre Compte</a></li></big>
     </ul> 

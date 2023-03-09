@@ -8,7 +8,7 @@
     $username = $_POST['identifiant'];
     $password = $_POST['password'];
     $type = $_POST['type'];
-    $mail = $_¨POST['mail'];
+    $mail = $_POST['mail'];
     //$photo = $_FILES['profil']['tmp_name'];
     //$email = $_POST['email'];
 
@@ -19,7 +19,10 @@
 
     if ($result > 0) {
         // L'utilisateur existe déjà
-        echo "Cet utilisateur existe déjà.";
+        setcookie('message', 'utilisateur existe déja', time() + 3600, '/');
+        header('Location: PageDeConnexion.php');
+
+
     } else {
         // L'utilisateur n'existe pas, on l'ajoute à la base de données
         $request = $db->prepare ("INSERT INTO utilisateurs (prenom, nom, identifiant, password, typeCompte, mail) 

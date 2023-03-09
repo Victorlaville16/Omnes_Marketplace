@@ -1,3 +1,5 @@
+<?php session_start();
+ ?>
 <!DOCTYPE html> 
 <head> 
 <title>Projet WEB</title> 
@@ -12,19 +14,37 @@
 <div id="wrapper">
     <div id="header">
         <img src="titre+logo1.png" alt="" width="100%" height="100%">
+        <button id="deconnexion"><big>Deconnexion</button>
+        <script>
+            const deconnexion = document.getElementById("deconnexion");
 
-        <!--<div id="titre"><img src="titre2.png" alt="javalogo" height="200" width="700"></div>
+            deconnexion.addEventListener("click", function() {
+            // Envoyer une requête AJAX au serveur pour déconnecter la session
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "deconnexion.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
 
-    <div id="logo"><img src="logo.png" alt="javalogo" height="150" width="150"></div>-->
+                console.log(xhr.responseText);
+                // Recharger la page pour afficher les modifications
+                window.location.href="Accueil.php"   ;     
+
+
+                }
+            };
+            xhr.send();
+            });
+</script>
+
 </div>
 
 <nav>
     <ul>
-      <!--  <li><i class="fa-solid fa-shop"></i></li>-->
 
-      <li><a href="Accueil.php"><big>Acceuil</a></li>
-        <li><a href="ToutParcourir.php"><font color="#00C2CB">Tout Parcourir</font></a></li>
-        <li><a href="Notifications.php">Notifications</a></li>
+      <li><a href="AccueilVendeur.php"><big>Acceuil</a></li>
+        <li><a href="ToutParcourirVendeur.php"><font color="#00C2CB">Tout Parcourir</font></a></li>
+        <li><a href="NotificationsVendeur.php">Notifications</a></li>
         <li><a href="deposer_vendeur.php">Déposer une annonce</a></li>
         <li><a href="votreCompte.php">Votre Compte</a></li></big>
     </ul> 

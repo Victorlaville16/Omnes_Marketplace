@@ -26,7 +26,6 @@ include('fonctions.php');
   <div id="wrapper">
     <div id="header">
       <img src="titre+logo1.png" alt="" width="100%" height="100%">
-
     </div>
 
     <nav>
