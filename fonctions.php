@@ -71,10 +71,10 @@
         return $telephone['telephone'];
     }
 
-    function getPhotoProfil(string $identifiant){
+    function getPhotoProfil(int $ID_utilisateur){
         //Connexion BD
         $db = connectBD();
-        $request = $db->prepare("SELECT photo FROM utilisateurs WHERE identifiant = '$identifiant'");
+        $request = $db->prepare("SELECT photo FROM utilisateurs WHERE ID_utilisateur = '$ID_utilisateur'");
         $request->execute();
         $photo = $request->fetch();
         echo '<img src="data:image/jpeg;base64,'.base64_encode( $photo['photo'] ).'"/>';

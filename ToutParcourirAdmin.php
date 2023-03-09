@@ -22,10 +22,10 @@
     <ul>
       <!--  <li><i class="fa-solid fa-shop"></i></li>-->
 
-      <li><a href="Accueil.php"><big>Acceuil</a></li>
-        <li><a href="ToutParcourir.php"><font color="#00C2CB">Tout Parcourir</font></a></li>
+      <li><a href="AccueilAdmin.php"><big>Accueil</a></li>
+        <li><a href="ToutParcourirAdmin.php"><font color="#00C2CB">Tout Parcourir</font></a></li>
         <li><a href="Notifications.php">Notifications</a></li>
-        <li><a href="GererVosAnnonce">Gérer Vos Annonces</a></li>
+        <li><a href="GererLesAnnonces.php">Gérer Les Annonces</a></li>
         <li><a href="votreCompte.php">Votre Compte</a></li></big>
     </ul> 
 </nav>

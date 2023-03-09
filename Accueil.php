@@ -46,7 +46,7 @@
       <!--  <li><i class="fa-solid fa-shop"></i></li>-->
 
 
-      <li><a href="Accueil.php"><big><font color="#00C2CB">Acceuil</font></a></li>
+      <li><a href="Accueil.php"><big><font color="#00C2CB">Accueil</font></a></li>
         <li><a href="ToutParcourir.php">Tout Parcourir</a></li>
         <li><a href="Notifications.php">Notifications</a></li>
         <li><a href="#">Panier</a></li>

@@ -44,34 +44,7 @@ $ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur'])
             background-color: #f5f5f5;
         }
     </style>
-
-
-</head>
-
-<body>
-    <div id="wrapper">
-        <div id="header">
-            <img src="titre+logo1.png" width="100%">
-            <button id="deconnexion"><big>Deconnexion</button>
-            <script>
-                const deconnexion = document.getElementById("deconnexion");
-
-                deconnexion.addEventListener("click", function () {
-                    // Envoyer une requête AJAX au serveur pour déconnecter la session
-                    const xhr = new XMLHttpRequest();
-                    xhr.open("POST", "deconnexion.php", true);
-                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                    xhr.onreadystatechange = function () {
-                        if (xhr.readyState === 4 && xhr.status === 200) {
-                            console.log(xhr.responseText);
-                            // Recharger la page pour afficher les modifications
-                            window.location.href = "Accueil.php"
-                        }
-                    };
-                    xhr.send();
-                });
-            </script>
-        </div>
+    
 
         <nav>
             <ul>
@@ -91,7 +64,8 @@ $ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur'])
                 <?php
 
 
-                echo " " . getPrenom($_SESSION['ID_utilisateur']) . " " . getNom($_SESSION['ID_utilisateur']) ?>
+                echo " " . getPrenom($_SESSION['ID_utilisateur']) . " " . getNom($_SESSION['ID_utilisateur']);
+                getPhotoProfil($_SESSION['ID_utilisateur']); ?>
             </h1>
 
 
