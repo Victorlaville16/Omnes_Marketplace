@@ -47,6 +47,12 @@
 
 
         $request->execute();
+        $ID_acheteur = getIDAcheteur($ID_utilisateur);
+        $request = $db->prepare ("INSERT INTO carte (ID_acheteur) 
+            VALUES ('$ID_acheteur')");          
+
+
+        $request->execute();
 
         }
 

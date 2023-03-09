@@ -49,9 +49,11 @@
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
+
                 console.log(xhr.responseText);
                 // Recharger la page pour afficher les modifications
                 window.location.href="Accueil.php"   ;     
+
 
                 }
             };

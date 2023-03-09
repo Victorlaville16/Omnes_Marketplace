@@ -30,6 +30,7 @@
                                 VALUES ('$nom', '$prix', '$kilometrage', '$carburant', '$description', '$ID_vendeur')");
     $request->execute();
 
+
     $photo_tmp1 = $_FILES['image1']['tmp_name'];
     $photo_tmp2 = $_FILES['image2']['tmp_name'];
     $photo_tmp3 = $_FILES['image3']['tmp_name'];
@@ -39,23 +40,33 @@
     $photo_contenu2 = file_get_contents($photo_tmp2);
     $photo_contenu3 = file_get_contents($photo_tmp3);
 
-    $request = $db->prepare ("UPDATE vehicules SET photo1 = ? WHERE ID_vendeur  = $ID_vendeur");
+    // L'utilisateur n'existe pas, on l'ajoute à la base de données
+    $request = $db->prepare ("INSERT INTO vehicules (nom, prix, kilometrage, carburant, description, ID_vendeur, photo1, photo2, photo3) 
+                                VALUES ('$nom', '$prix', '$kilometrage', '$carburant', '$description', '$ID_vendeur', ?, ?, ?)");          
+    
     $request->bindParam(1, $photo_contenu1, PDO::PARAM_LOB);   
+    $request->bindParam(2, $photo_contenu2, PDO::PARAM_LOB);
+    $request->bindParam(3, $photo_contenu3, PDO::PARAM_LOB);   
+    $request->execute();
+
+    /*
+    $request = $db->prepare ("UPDATE vehicules SET photo1 = ? WHERE ID_vendeur  = $ID_vendeur");
+    
     $request->execute();
 
     $request = $db->prepare ("UPDATE vehicules SET photo2 = ? WHERE ID_vendeur  = $ID_vendeur");
-    $request->bindParam(1, $photo_contenu2, PDO::PARAM_LOB);   
+       
     $request->execute();
 
     $request = $db->prepare ("UPDATE vehicules SET photo3 = ? WHERE ID_vendeur  = $ID_vendeur");
-    $request->bindParam(1, $photo_contenu3, PDO::PARAM_LOB);   
+    
     $request->execute();
 
 
     $request = $db->prepare("SELECT photo1 FROM vehicules WHERE ID_vendeur = '$ID_vendeur'");
     $request->execute();
-    $photo = $request->fetch();
+    $photo = $request->fetch();*/
 
     header('Location: GererVosAnnonces.php');
-
+    
 ?>

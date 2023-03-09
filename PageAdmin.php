@@ -31,6 +31,7 @@ include('fonctions.php');
                 console.log(xhr.responseText);
                 // Recharger la page pour afficher les modifications
                 window.location.href="Accueil.php"                }
+
             };
             xhr.send();
             });
