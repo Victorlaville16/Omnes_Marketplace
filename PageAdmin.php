@@ -30,7 +30,7 @@ include('fonctions.php');
                 if (xhr.readyState === 4 && xhr.status === 200) {
                 console.log(xhr.responseText);
                 // Recharger la page pour afficher les modifications
-                location.reload();
+                window.location.href="Accueil.php"
                 }
             };
             xhr.send();
@@ -53,7 +53,7 @@ include('fonctions.php');
     <h1 class="PremierTitre">Bienvenue sur votre compte : <?php 
     
     
-    echo " ".getPrenom($_SESSION['id']) ." ".getNom($_SESSION['id']) ?> </h1>
+    echo " ".getPrenom($_SESSION['ID_utilisateur']) ." ".getNom($_SESSION['ID_utilisateur']) ?> </h1>
 
     
 

@@ -13,7 +13,7 @@
         border: solid;
 
     }
-    button {
+    #deconnexion {
       position: absolute;
       top: 10%;
       left: 93%;
@@ -173,7 +173,7 @@ ol, li {
   padding: 0;
 }
 
-.carousel {
+.carrousel {
     width: 30%;
 height: 20%;
   padding-top: 25%;
@@ -185,7 +185,7 @@ margin: 5%
 }
 
 
-.carousel__viewport {
+.carrousel__viewport {
   position: absolute;
   top: 0;
   right: 0;
@@ -200,7 +200,7 @@ margin: 5%
 
 
 
-.carousel__viewport:hover {
+.carrousel__viewport:hover {
   position: absolute;
   top: 0;
   right: 0;
@@ -213,7 +213,7 @@ margin: 5%
   scroll-snap-type: x mandatory;
 }
 
-.carousel__slide {
+.carrousel__slide {
   position: relative;
   flex: 0 0 100%;
   width: 100%;
@@ -221,7 +221,7 @@ margin: 5%
 }
 
 
-.carousel__snapper {
+.carrousel__snapper {
   position: absolute;
   top: 0;
   left: 0;
@@ -229,7 +229,7 @@ margin: 5%
   height: 95%;
   scroll-snap-align: center;
 }
-.carousel__snapper:hover{
+.carrousel__snapper:hover{
 position: absolute;
   top: 0;
   left: 0;
@@ -240,30 +240,30 @@ position: absolute;
 }
 
 @media (hover: hover) {
-  .carousel__snapper {
+  .carrousel__snapper {
     animation-name: tonext, snap;
     animation-timing-function: ease;
     animation-duration: 4s;
     animation-iteration-count: infinite;
   }
 
-  .carousel__slide:last-child .carousel__snapper {
+  .carrousel__slide:last-child .carrousel__snapper {
     animation-name: tostart, snap;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .carousel__snapper {
+  .carrousel__snapper {
     animation-name: none;
   }
 }
 
-.carousel:hover .carousel__snapper,
-.carousel:focus-within .carousel__snapper {
+.carrousel:hover .carrousel__snapper,
+.carrousel:focus-within .carrousel__snapper {
   animation-name: none;
 }
 
-.carousel__navigation {
+.carrousel__navigation {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -271,12 +271,12 @@ position: absolute;
   text-align: center;
 }
 
-.carousel__navigation-list,
-.carousel__navigation-item {
+.carrousel__navigation-list,
+.carrousel__navigation-item {
   display: inline-block;
 }
 
-.carousel__navigation-button {
+.carrousel__navigation-button {
   display: inline-block;
   width: 1.5rem;
   height: 1.5rem;

@@ -2,7 +2,7 @@
 <?php
     //include('fonctions.php');
 
-    if(isset($_SESSION['id'])){
+    if(isset($_SESSION['ID_utilisateur'])){
         if($_SESSION['typeCompte']=='1'){
         // On récupère le type de l'utilisateur : vendeur, acheteur, admin
         /*
