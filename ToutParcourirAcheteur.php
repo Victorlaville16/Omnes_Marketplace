@@ -22,9 +22,9 @@
     <ul>
       <!--  <li><i class="fa-solid fa-shop"></i></li>-->
 
-      <li><a href="Accueil.php"><big>Acceuil</a></li>
-        <li><a href="ToutParcourir.php"><font color="#00C2CB">Tout Parcourir</font></a></li>
-        <li><a href="Notifications.php">Notifications</a></li>
+      <li><a href="AccueilAcheteur.php"><big>Acceuil</a></li>
+        <li><a href="ToutParcourirAcheteur.php"><font color="#00C2CB">Tout Parcourir</font></a></li>
+        <li><a href="NotificationsAcheteur.php">Notifications</a></li>
         <li><a href="VotreSelection.php">Votre Sélection</a></li>
         <li><a href="votreCompte.php">Votre Compte</a></li></big>
     </ul> 

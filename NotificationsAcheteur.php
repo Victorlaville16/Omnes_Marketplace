@@ -1,13 +1,12 @@
-<?php session_start(); ?>
+
 <!DOCTYPE html> 
 <head> 
 <title>Projet WEB</title> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/fad59fd69b.js" crossorigin="anonymous"></script>
-<script type="text/javascript" src="SiteWeb.js"></script>
-
 <meta charset="utf-8" /> 
 <link rel="stylesheet" href="style.css" type = "text/css" />
+
 
 </head> 
 <body> 
@@ -25,59 +24,55 @@
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
+
                 console.log(xhr.responseText);
                 // Recharger la page pour afficher les modifications
                 window.location.href="Accueil.php"   ;     
+
 
                 }
             };
             xhr.send();
             });
 </script>
-    </div>
+</div>
 
 <nav>
     <ul>
-      <!--  <li><i class="fa-solid fa-shop"></i></li>-->
-
-
-      <li><a href="AccueilAdmin.php"><big>Acceuil</a></li>
-        <li><a href="ToutParcourirAdmin.php">Tout Parcourir</a></li>
-        <li><a href="NotificationsAdmin.php">Notifications</a></li>
-        <li><a href="GererLesAnnonces"><font color="#00C2CB">Gerer Les Annonces</font></a></li>
+    <li><a href="AccueilAcheteur.php"><big>Acceuil</a></li>
+        <li><a href="ToutParcourirAcheteur.php">Tout Parcourir</a></li>
+        <li><a href="NotificationsAcheteur.php"><font color="#00C2CB">Notifications</font></a></li>
+        <li><a href="VotreSelection.php">Votre Sélection</a></li>
         <li><a href="votreCompte.php">Votre Compte</a></li></big>
     </ul> 
 </nav>
 
 <div id="content">
+    <h1 class="PremierTitre">Vos Notifications</h1>
 
-
-    <h1>Les annonces</h1>
-
-    <?php
-      include('fonctions.php');
-    $db = connectBD();
-    $ID_utilisateur=$_SESSION['ID_utilisateur'];
-
- $request = $db->prepare("SELECT * FROM vehicules");// on verifie que l'id vendeur vaut bien id utilisateur pour récuperer que celle de l'admin
- $request->execute();
+    
 
 
 
-        while($resultat=$request->fetch()){
-            echo "-" .$resultat['nom']. " ".$resultat['prix']. " ". "Description : ".$resultat['description'] ;
-            echo "<br>";       }
+    <h2>Première Notification</h2>
 
-    ?>
-
-
-  <h1>Ajouter / Supprimer des annonces</h1>
-    <p>
-   <a href="deposer_vendeur.php">Cliquer ICI pour ajouter une annonce</a>
+    <p>Votre annonce : ... a été acheter par la méthode : ...    et par : ....</p>
     <br>
+
+    <h2>Deuxième Notification</h2>
+
+    <p>Votre annonce : ... a été acheter par la méthode : ...    et par : ....</p>
     <br>
-    <a href="formulaireSuppressionVehicules.php">Cliquer ICI pour supprimer une annonce</a>
-        </p>
+
+    <h2>Troisième Notification</h2>
+
+    <p>Vous avez une demande de négociation pour votre annonce : ... 
+        <br>
+    Pour le montant de : ... à la place de : ...</p>
+
+
+
+  
   
     
 </div>

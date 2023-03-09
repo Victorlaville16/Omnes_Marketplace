@@ -1,4 +1,15 @@
-
+<?php session_start();
+if (isset($_COOKIE['message'])) {
+    $message = $_COOKIE['message'];
+    // Afficher le message à l'utilisateur
+	?>
+	<script type="text/javascript">
+	alert('<?php echo $message?>');
+	</script>
+	<?php
+    // Supprimer le cookie
+    setcookie('message', '', time() - 3600, '/');
+} ?>
 <!DOCTYPE html>
 <html>
 <head>

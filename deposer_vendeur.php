@@ -5,7 +5,7 @@
 <title>Projet WEB</title> 
 <script src="https://kit.fontawesome.com/fad59fd69b.js" crossorigin="anonymous"></script>
 <meta charset="utf-8" /> 
-<link href="prime.css" rel="stylesheet" type="text/css"/> 
+<link href="style.css" rel="stylesheet" type="text/css"/> 
 </head> 
 <style type="text/css">
 
@@ -124,20 +124,39 @@ nav a:hover{
 </style>
 <body> 
 <div id="wrapper">
-    <div id="header">
-        <div id="titre"><img src="titre2.png" alt="javalogo" height="200" width="700"></div>
+<div id="header">
+        <img src="titre+logo1.png" width="100%">
+        <button id="deconnexion"><big>Deconnexion</button>
+        <script>
+            const deconnexion = document.getElementById("deconnexion");
 
-    <div id="logo"><img src="logo.png" alt="javalogo" height="150" width="150"></div>
+            deconnexion.addEventListener("click", function() {
+            // Envoyer une requête AJAX au serveur pour déconnecter la session
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "deconnexion.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+
+                console.log(xhr.responseText);
+                // Recharger la page pour afficher les modifications
+                window.location.href="Accueil.php"   ;     
+
+
+                }
+            };
+            xhr.send();
+            });
+</script>
 </div>
 
 <nav>
     <ul>
-      <!--  <li><i class="fa-solid fa-shop"></i></li>-->
-      <li><a href="#"><big>Acceuil</a></li>
-        <li><a href="#">Tout Parcourir</a></li>
-        <li><a href="#">Notifications</a></li>
-        <li><a href="#">Déposer une annonce</a></li>
-        <li><a href="#">Votre Compte</a></li></big>
+    <li><a href="AccueilVendeur.php"><big>Acceuil</a></li>
+        <li><a href="ToutParcourirVendeur.php">Tout Parcourir</a></li>
+        <li><a href="NotificationsVendeur.php">Notifications</a></li>
+        <li><a href="deposer_vendeur.php"><font color="#00C2CB">Déposer une annonce</font></a></li>
+        <li><a href="votreCompte.php">Votre Compte</a></li></big>
     </ul> 
 </nav>
 

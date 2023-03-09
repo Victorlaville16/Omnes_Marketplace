@@ -42,9 +42,9 @@ include('fonctions.php');
     <ul>
       <!--  <li><i class="fa-solid fa-shop"></i></li>-->
         <li><a href="AccueilAdmin.php"><big>Accueil</a></li>
-        <li><a href="ToutParcourir.php">Tout Parcourir</a></li>
-        <li><a href="Notifications.php">Notifications</a></li>
-        <li><a href="VotreSelection.php">Panier</a></li>
+        <li><a href="ToutParcourirAdmin.php">Tout Parcourir</a></li>
+        <li><a href="NotificationsAdmin.php">Notifications</a></li>
+        <li><a href="GererLesAnnonces.php">Gerer les annonces</a></li>
         <li><a href="votreCompte.php"><font color="#00C2CB">Votre Compte</font></a></li></big>
     </ul> 
 </nav>

@@ -1,4 +1,6 @@
 <?php
+ session_start();
+
 include('fonctions.php');
 ?>
 
@@ -40,10 +42,10 @@ include('fonctions.php');
 <nav>
     <ul>
       <!--  <li><i class="fa-solid fa-shop"></i></li>-->
-        <li><a href="Accueil.php"><big>Acceuil</a></li>
-        <li><a href="ToutParcourir.php">Tout Parcourir</a></li>
-        <li><a href="Notifications.php">Notifications</a></li>
-        <li><a href="VotreSelection.php">Panier</a></li>
+        <li><a href="AccueilVendeur.php"><big>Acceuil</a></li>
+        <li><a href="ToutParcourirVendeur.php">Tout Parcourir</a></li>
+        <li><a href="NotificationsVendeur.php">Notifications</a></li>
+        <li><a href="deposer_vendeur.php">Déposer une annonce</a></li>
         <li><a href="PageVendeur.php"><font color="#00C2CB">Votre Compte</font></a></li></big>
     </ul> 
 </nav>
