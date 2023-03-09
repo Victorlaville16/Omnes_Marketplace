@@ -61,6 +61,7 @@ include('fonctions.php');
 
     <h1>Vos articles en ventes</h1>
     <h2>Enchères</h2>
+    
     <img src="VoitureCollection.jpg" width="20%">
     <p><font size=5%>Montant actuel de l'enchere : ...</font></p>
 
