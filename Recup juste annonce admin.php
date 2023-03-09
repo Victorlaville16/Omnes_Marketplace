@@ -42,9 +42,9 @@
 
 
       <li><a href="Accueil.php"><big>Acceuil</a></li>
-        <li><a href="ToutParcourirVendeur.php">Tout Parcourir</a></li>
+        <li><a href="ToutParcourirAdmin.php">Tout Parcourir</a></li>
         <li><a href="Notifications.php">Notifications</a></li>
-        <li><a href="GererVosAnnonce"><font color="#00C2CB">Gérer Les Annonces</font></a></li>
+        <li><a href="GererVosAnnonce"><font color="#00C2CB">Gérer Vos Annonces</font></a></li>
         <li><a href="votreCompte.php">Votre Compte</a></li></big>
     </ul> 
 </nav>
@@ -52,14 +52,14 @@
 <div id="content">
 
 
-    <h1>Les annonces</h1>
+    <h1>Vos annonces</h1>
 
     <?php
       include('fonctions.php');
     $db = connectBD();
     $ID_utilisateur=$_SESSION['ID_utilisateur'];
 
- $request = $db->prepare("SELECT * FROM vehicules");// on verifie que l'id vendeur vaut bien id utilisateur pour récuperer que celle de l'admin
+ $request = $db->prepare("SELECT * FROM vehicules WHERE ID_vendeur = '$ID_utilisateur'");// on verifie que l'id vendeur vaut bien id utilisateur pour récuperer que celle de l'admin
  $request->execute();
 
 

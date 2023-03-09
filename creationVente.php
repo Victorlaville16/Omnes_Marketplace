@@ -56,7 +56,6 @@
     $request->execute();
     $photo = $request->fetch();
 
-    header('Location: DemonstrationVente.php');
+    header('Location: GererVosAnnonces.php');
 
-    echo '<img src="data:image/jpeg;base64,'.base64_encode( $photo['photo1'] ).'"/>';
 ?>

@@ -65,10 +65,10 @@
       <!--  <li><i class="fa-solid fa-shop"></i></li>-->
 
 
-      <li><a href="Accueil.php"><big><font color="#00C2CB">Acceuil</font></a></li>
+      <li><a href="AccueilAdmin.php"><big><font color="#00C2CB">Acceuil</font></a></li>
         <li><a href="ToutParcourirAdmin.php">Tout Parcourir</a></li>
         <li><a href="Notifications.php">Notifications</a></li>
-        <li><a href="GererVosAnnonces.php">Gérer Vos Annonces</a></li>
+        <li><a href="GererLesAnnonces.php">Gérer Les Annonces</a></li>
         <li><a href="votreCompte.php">Votre Compte</a></li></big>
     </ul> 
 </nav>

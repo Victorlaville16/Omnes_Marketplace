@@ -42,7 +42,7 @@
 
 
       <li><a href="Accueil.php"><big>Acceuil</a></li>
-        <li><a href="ToutParcourirVendeur.php">Tout Parcourir</a></li>
+        <li><a href="ToutParcourirAdmin.php">Tout Parcourir</a></li>
         <li><a href="Notifications.php">Notifications</a></li>
         <li><a href="GererVosAnnonce"><font color="#00C2CB">Gérer Les Annonces</font></a></li>
         <li><a href="votreCompte.php">Votre Compte</a></li></big>
@@ -76,7 +76,7 @@
    <a href="deposer_vendeur.php">Cliquer ICI pour ajouter une annonce</a>
     <br>
     <br>
-    <a href="formulaireSuppression.php">Cliquer ICI pour supprimer une annonce</a>
+    <a href="formulaireSuppressionVehicules.php">Cliquer ICI pour supprimer une annonce</a>
         </p>
   
     
