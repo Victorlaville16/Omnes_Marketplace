@@ -162,10 +162,19 @@ nav a:hover{
 
 <div id="content">
     <form action="creationVente.php" method="post" enctype="multipart/form-data">
-        <tr><br>
-            <td>Nom produit</td><br>
-            <td><input type="text" name="nom_prod"> </td><br><br>
-        </tr>
+    <tr><br>
+                <td>Méthode de vente</td><br>
+                <td><select name="methode" id="methode">
+                <option value="">----------Choisir une méthode de vente----------</option>
+                <option value="immediate">Vente immediate</option>
+                <option value="negociation">Vente avec negociation</option>
+                <option value="encheres">Vente aux enchères</option>
+            </select><br><br>
+            </tr>
+            <tr><br>
+                <td>Nom produit</td><br>
+                <td><input type="text" name="nom_prod"> </td><br><br>
+            </tr>
         <tr>
             <td>Prix</td><br>
             <td><input type="number" name="prix"> </td><br><br>
