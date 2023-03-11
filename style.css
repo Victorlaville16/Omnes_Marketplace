@@ -126,6 +126,7 @@ nav a:hover{
   animation-duration: 3s;
   animation-name: slidein;
   font-size: 250%;
+  width: 100%;
 
 }
 
@@ -450,4 +451,9 @@ select {
 
 .select:hover::after {
   color: #FA6141;
+}
+
+
+#photoProfil{
+height: 10px;
 }
