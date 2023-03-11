@@ -54,7 +54,7 @@ include('fonctions.php');
     <h1 class="PremierTitre">Bienvenue sur votre compte : <?php 
     
     
-    echo " ".getPrenom($_SESSION['id']) ." ".getNom($_SESSION['id']) ?> </h1>
+    echo " ".getPrenom($_SESSION['ID_utilisateur']) ." ".getNom($_SESSION['ID_utilisateur']) ?> </h1>
 
     
 

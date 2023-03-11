@@ -20,69 +20,10 @@ include('fonctions.php');
   ?>
 
 
-</head>
-
-<body>
-  <div id="wrapper">
-    <div id="header">
-      <img src="titre+logo1.png" alt="" width="100%" height="100%">
-      <button id="deconnexion"><big>Deconnexion</button>
-        <script>
-            const deconnexion = document.getElementById("deconnexion");
-
-            deconnexion.addEventListener("click", function() {
-            // Envoyer une requête AJAX au serveur pour déconnecter la session
-            const xhr = new XMLHttpRequest();
-            xhr.open("POST", "deconnexion.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-
-                console.log(xhr.responseText);
-                // Recharger la page pour afficher les modifications
-                window.location.href="Accueil.php"   ;     
-
-
-                }
-            };
-            xhr.send();
-            });
-</script>
-    </div>
-
-    <nav>
-      <ul>
-        <?php
-        if (isset($_SESSION['typeCompte'])) {
-          if ($_SESSION['typeCompte'] == 1) {
-            //admin?>
-            <li><a href="AccueilAdmin.php"><big>Accueil</a></li>
-            <?php
-          }
-          if ($_SESSION['typeCompte'] == 2) {
-            //vendeur?>
-            <li><a href="AccueilVendeur.php"><big>Accueil</a></li>
-            <?php
-          }
-          if ($_SESSION['typeCompte'] == 3) {
-            //acheteur?>
-            <li><a href="AccueilAcheteur.php"><big>Accueil</a></li>
-            <?php
-          }
-        }
-
-        if (!isset($_SESSION['typeCompte'])) {
-          //rien?>
-          <li><a href="Accueil.php"><big>Accueil</a></li>
-          <?php
-        }
-        ?>
-
-        <li><a href="ToutParcourirAdmin.php">
-            <font color="#00C2CB">Tout Parcourir</font>
-          </a></li>
-        <li><a href="NotificationsAdmin.php">Notifications</a></li>
-        <li><a href="GererLesAnnonces">Gerer les annonces</a></li>
+      <li><a href="AccueilAdmin.php"><big>Accueil</a></li>
+        <li><a href="ToutParcourirAdmin.php"><font color="#00C2CB">Tout Parcourir</font></a></li>
+        <li><a href="Notifications.php">Notifications</a></li>
+        <li><a href="GererLesAnnonces.php">Gérer Les Annonces</a></li>
         <li><a href="votreCompte.php">Votre Compte</a></li></big>
       </ul>
     </nav>

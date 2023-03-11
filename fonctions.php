@@ -86,7 +86,7 @@
         $request = $db->prepare("SELECT $photo FROM vehicules WHERE ID_vehicule = '$ID_vehicule'");
         $request->execute();
         $result = $request->fetch();
-        echo '<img class="image" src="data:image/jpeg;base64,'.base64_encode( $result[$photo] ).'" />';
+        echo "<img class='image' src='data:image/jpeg;base64,".base64_encode( $result[$photo] )."' />";
     }
     function getPrixVehicule(int $ID_vehicule, PDO $db){
         //Connexion BD

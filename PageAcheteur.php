@@ -65,7 +65,8 @@ $ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur'])
                 <?php
 
 
-                echo " " . getPrenom($_SESSION['ID_utilisateur']) . " " . getNom($_SESSION['ID_utilisateur']) ?>
+                echo " " . getPrenom($_SESSION['ID_utilisateur']) . " " . getNom($_SESSION['ID_utilisateur']);
+                getPhotoProfil($_SESSION['ID_utilisateur']); ?>
             </h1>
 
 

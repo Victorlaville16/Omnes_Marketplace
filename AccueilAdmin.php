@@ -67,7 +67,7 @@
       <!--  <li><i class="fa-solid fa-shop"></i></li>-->
 
 
-      <li><a href="AccueilAdmin.php"><big><font color="#00C2CB">Acceuil</font></a></li>
+      <li><a href="AccueilAdmin.php"><big><font color="#00C2CB">Accueil</font></a></li>
         <li><a href="ToutParcourirAdmin.php">Tout Parcourir</a></li>
         <li><a href="NotificationsAdmin.php">Notifications</a></li>
         <li><a href="GererLesAnnonces.php">Gerer Les Annonces</a></li>
