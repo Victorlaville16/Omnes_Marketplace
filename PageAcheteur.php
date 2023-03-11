@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <?php
 include('fonctions.php');
-$ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur'])
+$ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur']);
     ?>
 
 <!DOCTYPE html>
@@ -50,10 +50,10 @@ $ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur'])
         <nav>
             <ul>
                 <!--  <li><i class="fa-solid fa-shop"></i></li>-->
-                <li><a href="Accueil.php"><big>Acceuil</a></li>
-                <li><a href="ToutParcourir.php">Tout Parcourir</a></li>
-                <li><a href="Notifications.php">Notifications</a></li>
-                <li><a href="VotreSelection.php">Panier</a></li>
+                <li><a href="AccueilAcheteur.php"><big>Acceuil</a></li>
+                <li><a href="ToutParcourirAcheteur.php">Tout Parcourir</a></li>
+                <li><a href="NotificationsAcheteur.php">Notifications</a></li>
+                <li><a href="VotreSelection.php">Votre Sélection</a></li>
                 <li><a href="PageAcheteur.php">
                         <font color="#00C2CB">Votre Compte</font>
                     </a></li></big>
@@ -255,22 +255,6 @@ $ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur'])
                     }
                 </script>
             </ul>
-
-            <h1>Comptes Existants</h1>
-
-            <h2>Vendeur</h2>
-            <p>...</p>
-
-            <h2>Acheteur</h2>
-            <p>...</p>
-
-            <h1>Demande de compte</h1>
-            <p>...</p>
-
-
-
-
-
         </div>
 
 

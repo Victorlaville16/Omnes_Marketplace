@@ -87,7 +87,11 @@ include('fonctions.php');
             $request = $db->prepare("SELECT photo FROM utilisateurs WHERE ID_utilisateur = '$ID_utilisateur'");
             $request->execute();
             $photo = $request->fetch();
+          //  echo '<img src="data:image/jpeg;base64,'.base64_encode( $photo['photo'] ).'"/>';
 
+            
+
+           
 
         //  if(list($source_largeur, $source_hauteur) = getimagesize($photo, array $image_info = null)){
 
@@ -109,17 +113,18 @@ include('fonctions.php');
             */
           //  imagecopyresampled($image, $source_image, 0, 0, 0, 0, $nouv_largeur, $nouv_hauteur, $source_largeur, $source_hauteur);
 // Le fichier
-$filename = $photo;//'<img src="data:image/jpeg;base64,'.base64_encode( $photo ).'"/>';
+$filename = base64_encode( $photo['photo'] );
 
 // Définition de la largeur et de la hauteur maximale
 $width = 5;
 $height = 5;
 
 // Content type
-header('Content-Type: image/jpeg');
+//header('Content-Type: image/jpeg');
+
 
 // Cacul des nouvelles dimensions
-list($width_orig, $height_orig) = getimagesize($filename);
+list($width_orig, $height_orig) = getimagesize(imagejpeg($filename, NULL, 100));
 
 $ratio_orig = $width_orig/$height_orig;
 
@@ -135,7 +140,7 @@ $image = imagecreatefromjpeg($filename);
 imagecopyresampled($image_p, $image, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
 
 // Affichage
-//magejpeg($image_p, null, 100);
+imagejpeg($image_p, null, 100);
 
           //  echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/>';
             /*

@@ -41,7 +41,8 @@
 <!DOCTYPE html> 
 <head> 
 <title>Projet WEB</title> 
-<script>div {
+<script>
+div {
     background-color: #f2f2f2;
     padding: 20px;
     border: 1px solid #ccc;
