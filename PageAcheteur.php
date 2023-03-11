@@ -1,6 +1,7 @@
 <?php session_start(); ?>
 <?php
 include('fonctions.php');
+include('afficherCarrouselVehicule.php');
 $ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur'])
     ?>
 
@@ -13,13 +14,13 @@ $ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur'])
     <meta charset="utf-8" />
     <link rel="stylesheet" href="style.css" type="text/css" />
 
-</head> 
-    <style>
-        input,
-        textarea {
-            background-color: #f5f5f5;
-        }
-    </style>
+</head>
+<style>
+    input,
+    textarea {
+        background-color: #f5f5f5;
+    }
+</style>
 
 
 <body>
@@ -207,13 +208,13 @@ $ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur'])
                     <li>
                         <label for="type">Type de carte :</label>
                         <select id="type" name="type">
-                                <option value="visa">Visa</option>
-                                <option value="MasterCard">MasterCard</option>
-                                <option value="American Express">American Express</option>
-                                <option value="Paypal">Paypal</option>
-                            </select>
-                        
-                        
+                            <option value="visa">Visa</option>
+                            <option value="MasterCard">MasterCard</option>
+                            <option value="American Express">American Express</option>
+                            <option value="Paypal">Paypal</option>
+                        </select>
+
+
                         <!--<button type="button"><img src="icone_modif.jfif" alt="Modifier"></button>-->
                     </li>
                     <li>
@@ -256,16 +257,44 @@ $ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur'])
                 </script>
             </ul>
 
-            <h1>Comptes Existants</h1>
+            <h1>Vos Achats</h1>
+            <?php
+            $db = connectBD();
+            $request = $db->prepare("SELECT * FROM vehicules WHERE ID_acheteur = $ID_acheteur ");
+            $request->execute();
+            $result = $request->fetch();
+            if ($result) {
+                afficherCarrouselVehicule($result['ID_vehicule'], $db);
+                $infosVendeur = getInfosVendeur($result['ID_vendeur'], $db);
+                ?>
+                <h3>Description de l'objet</h3>
+                <p>
+                    <?php echo $result["description"]; ?>
+                </p>
+                <h3>Prix</h3>
+                <p>
+                    <?php echo $result["prix"]; ?> €
+                </p>
+                <h3>Vendeur</h3>
+                <p>
+                    <?php echo $infosVendeur["prenom"] . " " . $infosVendeur['nom']; ?>
+                </p>
+                <a href="annulerAchat.php?ID_vehicule=<?php echo $result['ID_vehicule']; ?>">
+                    <button>Annuler l'achat</button>
+                </a>
+                <?php
+            }else{
+                ?>
+                <p>Rien à déclarer</p>
+                <?php
+            }
+            ?>
 
-            <h2>Vendeur</h2>
-            <p>...</p>
 
-            <h2>Acheteur</h2>
-            <p>...</p>
 
-            <h1>Demande de compte</h1>
-            <p>...</p>
+
+            
+
 
 
 

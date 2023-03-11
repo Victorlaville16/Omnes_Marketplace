@@ -128,6 +128,17 @@
         return $nom['ID_vendeur'];
    }
 
+   function getInfosVendeur(int $ID_vendeur, $db){
+        $request = $db->prepare("SELECT ID_utilisateur FROM vendeurs WHERE ID_vendeur = '$ID_vendeur'");
+        $request->execute();
+        $result=$request->fetch();
+        $ID_utilisateur=$result['ID_utilisateur'];
+        $request = $db->prepare("SELECT * FROM utilisateurs WHERE ID_utilisateur = '$ID_utilisateur'");
+        $request->execute();
+        $result=$request->fetch();
+        return $result;
+   }
+
    function getIDAcheteur(int $ID_utilisateur){
     $db = connectBD();
     $request = $db->prepare("SELECT ID_acheteur FROM acheteur WHERE ID_utilisateur = '$ID_utilisateur'");

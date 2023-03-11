@@ -85,6 +85,7 @@ include('fonctions.php');
             // Afficher la table HTML avec les résultats
             $index = 1;
             while ($row = $stmt->fetch()) {
+              if($row['ID_acheteur']==0){
 
               ?>
               <section class="carrousel" aria-label="Gallery">
@@ -92,7 +93,7 @@ include('fonctions.php');
                   <li id=<?php 'carrousel_slide' . $index ?> tabindex="0" class="carrousel__slide">
                     <div class="carrousel__snapper">
 
-                      <div class="overlay-image"><a href="pagevente.php?id=<?php echo $row['ID_vehicule'] ?>">
+                      <div class="overlay-image"><a href="pagevente.php?ID_vehicule=<?php echo $row['ID_vehicule'] ?>">
 
                           <?php  getPhotoVehicule($row['ID_vehicule'], 1, $pdo); ?>
 
@@ -112,7 +113,7 @@ include('fonctions.php');
                   <?php $index = $index + 1 ?>
                   <li id=<?php 'carrousel_slide' . $index ?> tabindex="0" class="carrousel__slide">
                     <div class="carrousel__snapper">
-                      <div class="overlay-image"><a href="pagevente.php?id=<?php echo $row['ID_vehicule'] ?>">
+                      <div class="overlay-image"><a href="pagevente.php?ID_vehicule=<?php echo $row['ID_vehicule'] ?>">
                           <?php  getPhotoVehicule($row['ID_vehicule'], 2, $pdo); ?>
 
 
@@ -132,7 +133,7 @@ include('fonctions.php');
                   <?php $index = $index + 1 ?>
                   <li id=<?php 'carrousel_slide' . $index ?> tabindex="0" class="carrousel__slide">
                     <div class="carrousel__snapper">
-                      <div class="overlay-image"><a href="pagevente.php?id=<?php echo $row['ID_vehicule'] ?>">
+                      <div class="overlay-image"><a href="pagevente.php?ID_vehicule=<?php echo $row['ID_vehicule'] ?>">
 
                           <?php  getPhotoVehicule($row['ID_vehicule'], 3, $pdo); ?>
 
@@ -168,7 +169,7 @@ include('fonctions.php');
               <br>
               <?php
               $index = $index + 1;
-
+              }
             }
           } else {
             echo "Aucun objet trouvé.";
