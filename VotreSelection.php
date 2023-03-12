@@ -13,54 +13,146 @@
 <div id="wrapper">
     <div id="header">
         <img src="titre+logo1.png" width="100%">
+        <button id="deconnexion"><big>Deconnexion</button>
+        <script>
+            const deconnexion = document.getElementById("deconnexion");
+
+            deconnexion.addEventListener("click", function() {
+            // Envoyer une requête AJAX au serveur pour déconnecter la session
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "deconnexion.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+
+                console.log(xhr.responseText);
+                // Recharger la page pour afficher les modifications
+                window.location.href="Accueil.php"   ;     
+
+
+                }
+            };
+            xhr.send();
+            });
+            </script>
 </div>
 
 <nav>
     <ul>
-      <!--  <li><i class="fa-solid fa-shop"></i></li>-->
-        <li><a href="AccueilAcheteur.html"><big>Acceuil</a></li>
-        <li><a href="ToutParcourir.html">Tout Parcourir</a></li>
-        <li><a href="Notifications.html">Notifications</a></li>
-        <li><a href="VotreSelection.html"><font color="#00C2CB">Panier</font></a></li>
-        <li><a href="VotreCompte.php">Votre Compte</a></li></big>
+        <li><a href="AccueilAcheteur.php"><big>Acceuil</a></li>
+        <li><a href="ToutParcourirAcheteur.php">Tout Parcourir</a></li>
+        <li><a href="NotificationsAcheteur.php">Notifications</a></li>
+        <li><a href="VotreSelection.php"><font color="#00C2CB">Votre Selection</font></a></li>
+        <li><a href="PageAcheteur.php">Votre Compte</a></li></big>
     </ul> 
 </nav>
 
 <div id="content">
+
     <h1 class="PremierTitre">Vos Sélections</h1>
 
+    <?php
+    include('fonctions.php');
+    $dsn = "mysql:host=localhost;dbname=marketplace;charset=utf8mb4";
+    $username = "root";
+    $password = "";
     
+    $pdo = new PDO($dsn, $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $ID_utilisateur=$_SESSION['ID_utilisateur'];
+    $ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur']);
+    $sql = "SELECT * FROM selection WHERE ID_acheteur=$ID_acheteur";
+    $stmt = $pdo->query($sql);
+    $index = 1;
+            while ($row = $stmt->fetch()) {
+
+              ?>
+              <section class="carrousel" aria-label="Gallery">
+                <ol class="carrousel__viewport">
+                  <li id=<?php 'carrousel_slide' . $index ?> tabindex="0" class="carrousel__slide">
+                    <div class="carrousel__snapper">
+
+                      <div class="overlay-image"><a href="pagevente.php?id=<?php echo $row['ID_vehicule'] ?>">
+
+                          <?php  getPhotoVehicule($row['ID_vehicule'], 1, $pdo); ?>
+
+
+                          <div class="hover">
+                            <div class="text">Prix de vente :
+                              <?php echo getPrixVehicule($row['ID_vehicule'], $pdo) . " $"; ?><br>
+                              Nom du modèle :
+                              <?php echo getNomVehicule($row['ID_vehicule'], $pdo); ?>
+                            </div>
+                          </div>
+                      </div>
+
+
+                    </div>
+                  </li>
+                  <?php $index = $index + 1 ?>
+                  <li id=<?php 'carrousel_slide' . $index ?> tabindex="0" class="carrousel__slide">
+                    <div class="carrousel__snapper">
+                      <div class="overlay-image"><a href="pagevente.php?id=<?php echo $row['ID_vehicule'] ?>">
+                          <?php  getPhotoVehicule($row['ID_vehicule'], 2, $pdo); ?>
+
+
+                          <div class="hover">
 
 
 
-    <h2>Première Selection</h2>
-    <img src="VoitureCollection.jpg" width="20%">
+                            <div class="text">Prix de vente :
+                              <?php echo getPrixVehicule($row['ID_vehicule'], $pdo) . " $"; ?><br>
+                              Nom du modèle :
+                              <?php echo getNomVehicule($row['ID_vehicule'], $pdo); ?>
+                            </div>
+                          </div>
+                      </div>
 
-    <h3>Principales Caractéristiques</h3>
-    <p>
-    Au Prix de : ... <br>
-Nombres de kilomètres : ... <br>
-Rareté : Classique / Haut de Gamme / Collection</p>
-    <br>
+                  </li>
+                  <?php $index = $index + 1 ?>
+                  <li id=<?php 'carrousel_slide' . $index ?> tabindex="0" class="carrousel__slide">
+                    <div class="carrousel__snapper">
+                      <div class="overlay-image"><a href="pagevente.php?id=<?php echo $row['ID_vehicule'] ?>">
 
-    <h2>Deuxième Selection</h2>
+                          <?php  getPhotoVehicule($row['ID_vehicule'], 3, $pdo); ?>
 
-    <p>
-        Au Prix de : ... <br>
-    Nombres de kilomètres : ... <br>
-    Rareté : Classique / Haut de Gamme / Collection</p>
-        <br></p>
-    <br>
+                          <div class="hover">
+                            <div class="text">Prix de vente :
+                              <?php echo getPrixVehicule($row['ID_vehicule'], $pdo) . " $"; ?><br>
+                              Nom du modèle :
+                              <?php echo getNomVehicule($row['ID_vehicule'], $pdo); ?>
+                            </div>
+                          </div>
+                      </div>
 
-    <h2>Troisième Notification</h2>
+                  </li>
+                </ol>
+                <aside class="carrousel__navigation">
+                  <ol class="carrousel__navigation-list">
+                    <li class="carrousel__navigation-item">
+                      <a href="<?php '#carrousel_slide' . ($index - 2) ?>" class="carrousel__navigation-button">Go to slide
+                        1</a>
+                    </li>
+                    <li class="carrousel__navigation-item">
+                      <a href="<?php '#carrousel_slide' . ($index - 1) ?>" class="carrousel__navigation-button">Go to slide
+                        2</a>
+                    </li>
+                    <li class="carrousel__navigation-item">
+                      <a href="<?php '#carrousel_slide' . $index ?>" class="carrousel__navigation-button">Go to slide 3</a>
+                    </li>
 
-    <p>Vous avez une demande de négociation pour votre annonce : ... 
-        <br>
-    Pour le montant de : ... à la place de : ...</p>
+                    </li>
+                  </ol>
+                </aside>
+              </section>
+              <br>
+              <?php
+              $index = $index + 1;
 
+            }
+?>
 
-
-  
   
     
 </div>

@@ -8,6 +8,34 @@
 
 <meta charset="utf-8" /> 
 <link rel="stylesheet" href="style.css" type = "text/css" />
+<style type="text/css">
+
+    .buttonSupprimer {
+      background-color: red;
+      border: none;
+      color: white;
+      padding: 20px 34px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 20px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    
+    .buttonAjouter {
+      background-color:#00C2CB ;
+      border: none;
+      color: white;
+      padding: 20px 34px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 20px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    </style>
 
 </head> 
 <body> 
@@ -65,18 +93,25 @@
 
 
         while($resultat=$request->fetch()){
-            echo "-" .$resultat['nom']. " ".$resultat['prix']. " ". "Description : ".$resultat['description'] ;
-            echo "<br>";       }
+            getPhotoVehicule($resultat['ID_vehicule'], 1, $db);
+            echo "- Nom : " .$resultat['nom']. " / Prix : ".$resultat['prix']. " / Carburant : ".$resultat['carburant']." / Kilometrage :".$resultat['kilometrage']. " / Description : ".$resultat['description'] ;
+            echo "<br>";  
+            ?>
+            <br>
+            <br>
+            <p>----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+            <?php
+            }
 
     ?>
 
 
   <h1>Ajouter / Supprimer des annonces</h1>
     <p>
-   <a href="deposer_vendeur.php">Cliquer ICI pour ajouter une annonce</a>
+   <a href="deposer_vendeur.php" class="buttonAjouter">Cliquer ICI pour ajouter une annonce</a>
     <br>
     <br>
-    <a href="formulaireSuppressionVehicules.php">Cliquer ICI pour supprimer une annonce</a>
+    <a href="formulaireSuppressionVehiculesAdmin.php" class="buttonSupprimer">Cliquer ICI pour supprimer une annonce</a>
         </p>
   
     

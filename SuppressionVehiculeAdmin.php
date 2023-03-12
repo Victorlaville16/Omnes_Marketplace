@@ -80,7 +80,7 @@ div {
 <body> 
 <h2>Confirmez-vous la suppression de l'article ?</h2>
 <a href="SupprimerDefinitif.php?kilometrage=<?php echo $kilometrage;?>&nom=<?php echo $nom;?>&carburant=<?php echo $carburant;?>"><button class="boutonSupprimer" type="submit">Supprimer définitivement</button></a>
-<a href="GererVosAnnonces.php" class="boutonAnnuler">Annuler</a>
+<a href="GererLesAnnonces.php" class="boutonAnnuler">Annuler</a>
 
 
 </body> 

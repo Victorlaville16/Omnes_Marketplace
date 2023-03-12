@@ -24,6 +24,7 @@ if (getTypeCompte($_SESSION['username']) == '1') {
     $ID_vendeur = $ID_utilisateur;
 }
 
+
 //On récupère l'ID Vendeur à partir de l'id utilisateur
 if (getTypeCompte($_SESSION['username']) == '2') {
     $ID_vendeur = getIDVendeur($_SESSION['ID_utilisateur'], $db);

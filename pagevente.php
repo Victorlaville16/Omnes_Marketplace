@@ -1,7 +1,8 @@
-<?php 
-session_start();
 
-?>
+<?php
+session_start();
+include('fonctions.php'); ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -11,6 +12,8 @@ session_start();
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="style.css" rel="stylesheet" type="text/css" />
 	<!-- Ajoutez ici les liens vers vos feuilles de style CSS et fichiers JavaScript -->
+
+
 </head>
 
 <body>
@@ -19,11 +22,15 @@ session_start();
 	</header>
 	<main>
 		<?php
+		
+		
 		include('afficherCarrouselVehicule.php');
-		include('fonctions.php');
 		// Récupérer la clé primaire de l'objet sélectionné
-		$ID_vehicule = $_GET["ID_vehicule"];
 
+		$ID_vehicule = $_GET["id"];
+		$ID_utilisateur = $_SESSION['ID_utilisateur'];
+		$ID_acheteur = getIDAcheteur($ID_utilisateur);
+		
 		// Connexion à la base de données
 		$dsn = "mysql:host=localhost;dbname=marketplace;charset=utf8mb4";
 
@@ -55,6 +62,7 @@ session_start();
 				<?php echo $row["nom"]; ?>
 			</h1>
 			<?php afficherCarrouselVehicule($row['ID_vehicule'], $pdo, 'immediate') ?>
+
 			<h2>Description de l'objet</h2>
 			<p>
 				<?php echo $row["description"]; ?>
@@ -67,13 +75,52 @@ session_start();
 			
 			<a href="acheter.php?ID_vehicule=<?php echo $row['ID_vehicule']; ?>">
 			<button>Acheter maintenant</button>
-			</a>
-			<a href="ToutParcourir.php">
-				<button>Retour à la liste des objets</button>
-			</a>
-			<a href="ToutParcourir.php">
-				<button>Ajouter aux favoris</button>
-			</a>
+
+			<a href="ToutParcourirAcheteur.php">Retour à la liste des objets</a>
+
+
+			<a href="ajouterEnSelection.php?ID_acheteur=<?php echo $ID_acheteur;?>&ID_vehicule=<?php echo $ID_vehicule;?>"><button type="submit" id="ajouterEnSelection">Mettre dans votre sélection</button></a>
+		
+		<!--	<form id="add-to-favorites-form" method="POST" action="ajouterEnSelection.php">
+			<button type="submit" id="ajouterEnSelection">Ajouter aux favoris</button>
+	</form>
+
+			<script type="text/javascript">
+				document.getElementById("ajouterEnSelection").addEventListener("click", function(event) {
+					// Empêche le formulaire de se soumettre
+
+					event.preventDefault();
+
+					// Récupère l'ID de l'article à ajouter aux favoris depuis le champ caché
+					var articleId = document.getElementById("$id");
+
+					var acheteurId = document.getElementById("$ID_acheteur");
+
+
+					// Envoie une requête AJAX vers la page PHP correspondante pour ajouter l'article aux favoris
+					var xhr = new XMLHttpRequest();
+
+					xhr.open("POST", "ajouterEnSelection.php", true);
+					xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					xhr.onreadystatechange = function() {
+						if (xhr.readyState === 4 && xhr.status === 200) {
+							location.reload();
+						}
+					};
+
+					xhr.send("article_id=" + articleId);
+					xhr.send("acheteur_id=" + acheteurId);
+
+				});
+
+				function miseEnSelection() {
+
+					alert("ca marche");
+				}*/
+			</script>-->
+		
+
+
 
 		</section>
 		<section id="temoignages">

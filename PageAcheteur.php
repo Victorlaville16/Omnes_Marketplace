@@ -3,6 +3,7 @@
 include('fonctions.php');
 include('afficherCarrouselVehicule.php');
 $ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur'])
+
     ?>
 
 <!DOCTYPE html>
@@ -14,13 +15,31 @@ $ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur'])
     <meta charset="utf-8" />
     <link rel="stylesheet" href="style.css" type="text/css" />
 
-</head>
-<style>
-    input,
-    textarea {
-        background-color: #f5f5f5;
-    }
-</style>
+
+</head> 
+    <style>
+           #PremierTitre{
+    width: 100%;
+  height: 10%;
+  margin: 0;
+  padding-left: 15px;
+}
+
+   
+#photoProfil{
+ height: 10px;
+}
+
+#Page{
+  float: left;
+  padding-top: 10%;
+}
+        input,
+        textarea {
+            background-color: #f5f5f5;
+        }
+    </style>
+
 
 
 <body>
@@ -51,10 +70,10 @@ $ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur'])
         <nav>
             <ul>
                 <!--  <li><i class="fa-solid fa-shop"></i></li>-->
-                <li><a href="Accueil.php"><big>Acceuil</a></li>
-                <li><a href="ToutParcourir.php">Tout Parcourir</a></li>
-                <li><a href="Notifications.php">Notifications</a></li>
-                <li><a href="VotreSelection.php">Panier</a></li>
+                <li><a href="AccueilAcheteur.php"><big>Acceuil</a></li>
+                <li><a href="ToutParcourirAcheteur.php">Tout Parcourir</a></li>
+                <li><a href="NotificationsAcheteur.php">Notifications</a></li>
+                <li><a href="VotreSelection.php">Votre Selection</a></li>
                 <li><a href="PageAcheteur.php">
                         <font color="#00C2CB">Votre Compte</font>
                     </a></li></big>
@@ -62,16 +81,22 @@ $ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur'])
         </nav>
 
         <div id="content">
-            <h1 class="PremierTitre">Bienvenue sur votre compte :
-                <?php
+    <h1 class="PremierTitre">Bienvenue sur votre compte :  
+    
+    
+    <?php
+    echo " ".getPrenom($_SESSION['ID_utilisateur']) ." ".getNom($_SESSION['ID_utilisateur']) ;?>
 
+    <div id="photoProfil">
+    <?php
+     getPhotoProfil($_SESSION['ID_utilisateur']);
+            
+?>
 
-                echo " " . getPrenom($_SESSION['ID_utilisateur']) . " " . getNom($_SESSION['ID_utilisateur']);
-                getPhotoProfil($_SESSION['ID_utilisateur']); ?>
-            </h1>
+</div> </h1>
+    
 
-
-
+<div id="Page">
 
 
             <h1>Articles achetés</h1>
@@ -324,6 +349,7 @@ $ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur'])
             }
             */
             ?>
+
 
 
 

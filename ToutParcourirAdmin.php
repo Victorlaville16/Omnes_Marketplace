@@ -11,6 +11,7 @@ include('fonctions.php');
   <script src="https://kit.fontawesome.com/fad59fd69b.js" crossorigin="anonymous"></script>
   <meta charset="utf-8" />
   <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
 
   <?php
   $db = connectBD();
@@ -19,11 +20,41 @@ include('fonctions.php');
 
   ?>
 
+  
+  <div id="wrapper">
+  
+<div id="header">
+        <img src="titre+logo1.png" width="100%">
+        <button id="deconnexion"><big>Deconnexion</button>
+        <script>
+            const deconnexion = document.getElementById("deconnexion");
 
+            deconnexion.addEventListener("click", function() {
+            // Envoyer une requête AJAX au serveur pour déconnecter la session
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "deconnexion.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+
+                console.log(xhr.responseText);
+                // Recharger la page pour afficher les modifications
+                window.location.href="Accueil.php"   ;     
+
+
+                }
+            };
+            xhr.send();
+            });
+</script>
+</div>
+
+<nav>
+  <ul>
       <li><a href="AccueilAdmin.php"><big>Accueil</a></li>
         <li><a href="ToutParcourirAdmin.php"><font color="#00C2CB">Tout Parcourir</font></a></li>
-        <li><a href="Notifications.php">Notifications</a></li>
-        <li><a href="GererLesAnnonces.php">Gérer Les Annonces</a></li>
+        <li><a href="NotificationsAdmin.php">Notifications</a></li>
+        <li><a href="GererLesAnnonces.php">Gerer Les Annonces</a></li>
         <li><a href="votreCompte.php">Votre Compte</a></li></big>
       </ul>
     </nav>
@@ -114,6 +145,7 @@ include('fonctions.php');
       }
       ?>
 
+    </div>
 
 
       <div id="footer">

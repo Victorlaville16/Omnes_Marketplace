@@ -1,7 +1,6 @@
-<?php session_start(); ?>
-<?php
-include('fonctions.php');
-?>
+<?php session_start(); 
+include('fonctions.php');?>
+
 
 <!DOCTYPE html> 
 <head> 
@@ -10,8 +9,52 @@ include('fonctions.php');
 <script src="https://kit.fontawesome.com/fad59fd69b.js" crossorigin="anonymous"></script>
 <meta charset="utf-8" /> 
 <link rel="stylesheet" href="style.css" type = "text/css" />
+<style type="text/css">
+    
+   #PremierTitre{
+    width: 100%;
+  height: 10%;
+  margin: 0;
+  padding-left: 15px;
+}
 
+   
+#photoProfil{
+ height: 10px;
+}
 
+#Page{
+  float: left;
+  padding-top: 10%;
+}
+
+.buttonSupprimer {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 20px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.buttonAjouter {
+  background-color:#00C2CB ;
+  border: none;
+  color: white;
+  padding: 20px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+</style>
 </head> 
 <body> 
 <div id="wrapper">
@@ -50,15 +93,22 @@ include('fonctions.php');
 </nav>
 
 <div id="content">
-    <h1 class="PremierTitre">Bienvenue sur votre compte : <?php 
+    <h1 class="PremierTitre">Bienvenue sur votre compte :  
     
     
-    echo " ".getPrenom($_SESSION['ID_utilisateur']) ." ".getNom($_SESSION['ID_utilisateur']) ?> </h1>
+    <?php
+    echo " ".getPrenom($_SESSION['ID_utilisateur']) ." ".getNom($_SESSION['ID_utilisateur']) ;?>
 
+    <div id="photoProfil">
+    <?php
+     getPhotoProfil($_SESSION['ID_utilisateur']);
+            
+?>
+
+</div> </h1>
     
 
-
-
+<div id="Page">
     <h1>Vos articles en ventes</h1>
     <h2>Enchères</h2>
     
@@ -75,8 +125,7 @@ include('fonctions.php');
 
     <h1>Comptes Existants</h1>
 
-    <h2>Vendeur</h2>
-    <p> Compte : <br>
+    <h2>Vendeurs</h2>
     <?php
     $db = connectBD();
         $request = $db->prepare("SELECT * FROM utilisateurs WHERE typeCompte = '2'");
@@ -84,12 +133,13 @@ include('fonctions.php');
         
 
         while($resultat=$request->fetch()){
-            echo "-" .$resultat['prenom']. " ".$resultat['nom']. " ". "Adresse mail : ".$resultat['mail'] ;
-            echo "<br>";       }
+          echo "-" .$resultat['prenom']. " ".$resultat['nom']." / ". "Adresse mail : ".$resultat['mail']." / "."Identifiant:"." ".$resultat['identifiant'];//ajout de l'identifiant car si meme prenom et meme nom alors probleme
+          echo "<br>";     
+            echo "<br>";
+            }
 
     ?>
-    <h2>Acheteur</h2>
-    <p> Compte : <br>
+    <h2>Acheteurs</h2>
     <?php
     $db = connectBD();
         $request = $db->prepare("SELECT * FROM utilisateurs WHERE typeCompte = '3'");
@@ -97,17 +147,18 @@ include('fonctions.php');
         
 
         while($resultat=$request->fetch()){
-            echo "-" .$resultat['prenom']. " ".$resultat['nom']." ". "Adresse mail : ".$resultat['mail'] ;
-            echo "<br>";       }
+            echo "-" .$resultat['prenom']. " ".$resultat['nom']." / ". "Adresse mail : ".$resultat['mail']." / "."Identifiant:"." ".$resultat['identifiant'];//ajout de l'identifiant car si meme prenom et meme nom alors probleme
+            echo "<br>";     
+            echo "<br>";  }
 
     ?>
    
     <h1>Ajouter / Supprimer des comptes</h1>
     <p>
-   <a href="formulaire.php">Cliquer ICI pour ajouter des comptes</a>
+   <a href="formulaire.php" class="buttonAjouter">Cliquer ICI pour ajouter des comptes</a>
     <br>
     <br>
-    <a href="formulaireSuppression.php">Cliquer ICI pour Supprimer des comptes</a>
+    <a href="formulaireSuppression.php" class="buttonSupprimer">Cliquer ICI pour Supprimer des comptes</a>
         </p>
 
 
@@ -118,6 +169,7 @@ include('fonctions.php');
 
   
     
+</div>
 </div>
 
 

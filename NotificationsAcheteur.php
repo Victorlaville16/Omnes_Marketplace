@@ -42,7 +42,7 @@
     <li><a href="AccueilAcheteur.php"><big>Acceuil</a></li>
         <li><a href="ToutParcourirAcheteur.php">Tout Parcourir</a></li>
         <li><a href="NotificationsAcheteur.php"><font color="#00C2CB">Notifications</font></a></li>
-        <li><a href="VotreSelection.php">Votre Sélection</a></li>
+        <li><a href="VotreSelection.php">Votre Selection</a></li>
         <li><a href="votreCompte.php">Votre Compte</a></li></big>
     </ul> 
 </nav>

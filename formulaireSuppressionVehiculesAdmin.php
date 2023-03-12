@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Page de Connexion</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Suppression de Vehicule</title>
 	<style>
 		body {
 			background-color: #f1f1f1;
@@ -69,26 +69,27 @@
 	</style>
 </head>
 <body>
-
+	<?php include_once('fonctions.php'); ?>
+	
 	<div class="container">
 
-		<h1>Connexion</h1>
+			<h1>Suppression de Vehicule</h1>
 
-		<form>
+	<form action="SuppressionVehiculeAdmin.php" method="post">
 
-			<label for="email">Adresse e-mail</label>
-			<input type="email" id="email" name="email" class="form-control" required>
+			<label for="nom">Nom</label>
+			<input type="text"  name="nom" class="form-control" required>
 
-			<label for="password">Mot de passe</label>
-			<input type="password" id="password" name="password" class="form-control" required>
+			<label for="carburant">Carburant</label>
+			<input type="text" name="carburant" class="form-control" required>
 
-			<button type="submit" class="btn">Se connecter</button>
+			<label for="kilometrage">Kilometrage</label>
+			<input type="text"  name="kilometrage" class="form-control" required>
 
-			<a href="#" class="link">Créer un compte</a>
 
-		</form>
-
-	</div>
+			
+			<button type="submit" name="submit" class="btn">Supprimer</button>
+	</form>
 
 </body>
 </html>

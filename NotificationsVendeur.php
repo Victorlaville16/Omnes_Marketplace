@@ -43,7 +43,7 @@
     <li><a href="AccueilVendeur.php"><big>Acceuil</a></li>
         <li><a href="ToutParcourirVendeur.php">Tout Parcourir</a></li>
         <li><a href="NotificationsVendeur.php"><font color="#00C2CB">Notifications</font></a></li>
-        <li><a href="deposer_vendeur.php">Déposer une annonce</a></li>
+        <li><a href="GererVosAnnonces.php">Gerer vos annonces</a></li>
         <li><a href="votreCompte.php">Votre Compte</a></li></big>
     </ul> 
 </nav>

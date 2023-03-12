@@ -14,27 +14,52 @@ include('fonctions.php');
 </head>
 
 <body>
-  <h1>Liste des objets en vente</h1>
+ 
 
   
   <?php //require_once('pass.php'); ?>
   <?php //require_once('insertion.php'); ?>
   <div id="wrapper">
     
+  <div id="header">
+        <img src="titre+logo1.png" width="100%">
+        <button id="deconnexion"><big>Deconnexion</button>
+        <script>
+            const deconnexion = document.getElementById("deconnexion");
 
+            deconnexion.addEventListener("click", function() {
+            // Envoyer une requête AJAX au serveur pour déconnecter la session
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "deconnexion.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+
+                console.log(xhr.responseText);
+                // Recharger la page pour afficher les modifications
+                window.location.href="Accueil.php"   ;     
+
+
+                }
+            };
+            xhr.send();
+            });
+</script>
+</div>
     <nav>
       <ul>
         <!--  <li><i class="fa-solid fa-shop"></i></li>-->
-        <li><a href="1ere conception.html"><big>Accueil</a></li>
-        <li><a href="ToutParcourir.php">Tout Parcourir</a></li>
-        <li><a href="#">Notifications</a></li>
+        <li><a href="Accueil.php"><big>Accueil</a></li>
+        <li><a href="ToutParcourir.php"><font color="#00C2CB">Tout Parcourir</font></a></li>
+        <li><a href="Notifications.php">Notifications</a></li>
         <li><a href="#">Panier</a></li>
-        <li><a href="#">Votre Compte</a></li></big>
+        <li><a href="votreCompte.php">Votre Compte</a></li></big>
       </ul>
     </nav>
     
 
     <div id="content">
+    <h1>Liste des objets en vente</h1>
     <form action="ToutParcourir.php" method="GET">
     <label for="tri">Trier par :</label>
     <select name="tri" id="tri">
