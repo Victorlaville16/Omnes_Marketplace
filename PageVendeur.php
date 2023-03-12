@@ -45,7 +45,7 @@ include('fonctions.php');
         <li><a href="AccueilVendeur.php"><big>Acceuil</a></li>
         <li><a href="ToutParcourirVendeur.php">Tout Parcourir</a></li>
         <li><a href="NotificationsVendeur.php">Notifications</a></li>
-        <li><a href="deposer_vendeur.php">Déposer une annonce</a></li>
+        <li><a href="GererVosAnnonces.php">Gerer vos annonces</a></li>
         <li><a href="PageVendeur.php"><font color="#00C2CB">Votre Compte</font></a></li></big>
     </ul> 
 </nav>

@@ -12,16 +12,28 @@
 
 .description {
     height:200px;
-    width:50%;
+    width:70%;
 }
+tr{
+    width: 100%;
+}
+
 .carburant{
     width:50%;
-    border left
+    border-left: 100%;
 }
+
 .form{
     height:50%;
     width:80%;
+
 }
+
+.methode{
+    width:50%;
+}
+
+
 
 
 </style>
@@ -66,10 +78,9 @@
 <div id="content">
 
     <form class="form" action="creationVente.php" method="post" enctype="multipart/form-data">
-    <tr><br>
+    <tr>
                 <td>Méthode de vente</td><br>
-                <td><select name="methode" id="methode">
-                <option value="">----------Choisir une méthode de vente----------</option>
+                <td><select name="methode" id="methode" class="methode">
                 <option value="immediate">Vente immediate</option>
                 <option value="negociation">Vente avec negociation</option>
                 <option value="encheres">Vente aux enchères</option>

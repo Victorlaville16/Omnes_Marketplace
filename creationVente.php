@@ -19,12 +19,12 @@
     $username=$_SESSION['username'];
 
     // Le vehicule n'existe pas, on l'ajoute à la base de données
-    if(getTypeCompte($_SESSION['username'])=='1'){
+    if(getTypeCompte( $ID_utilisateur)=='1'){
         $ID_vendeur =$ID_utilisateur;
     }
     
     //On récupère l'ID Vendeur à partir de l'id utilisateur
-    if(getTypeCompte($_SESSION['username'])=='2'){
+    if(getTypeCompte( $ID_utilisateur)=='2'){
     $ID_vendeur = getIDVendeur($_SESSION['ID_utilisateur'], $db);
     }        
     

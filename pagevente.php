@@ -21,12 +21,14 @@ include('fonctions.php'); ?>
 	</header>
 	<main>
 		<?php
+		
+		
 		include('afficherCarrouselVehicule.php');
 		// Récupérer la clé primaire de l'objet sélectionné
 		$ID_vehicule = $_GET["id"];
 		$ID_utilisateur = $_SESSION['ID_utilisateur'];
 		$ID_acheteur = getIDAcheteur($ID_utilisateur);
-
+		
 		// Connexion à la base de données
 		$dsn = "mysql:host=localhost;dbname=marketplace;charset=utf8mb4";
 
@@ -63,7 +65,6 @@ include('fonctions.php'); ?>
 			<button>Acheter maintenant</button>
 			<a href="ToutParcourirAcheteur.php">Retour à la liste des objets</a>
 
-		<!--	<button type="button" onclick="miseEnSelection()">Mettre dans votre sélection</button>-->
 
 			<a href="ajouterEnSelection.php?ID_acheteur=<?php echo $ID_acheteur;?>&ID_vehicule=<?php echo $ID_vehicule;?>"><button type="submit" id="ajouterEnSelection">Mettre dans votre sélection</button></a>
 		

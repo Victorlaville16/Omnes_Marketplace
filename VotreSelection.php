@@ -13,15 +13,36 @@
 <div id="wrapper">
     <div id="header">
         <img src="titre+logo1.png" width="100%">
+        <button id="deconnexion"><big>Deconnexion</button>
+        <script>
+            const deconnexion = document.getElementById("deconnexion");
+
+            deconnexion.addEventListener("click", function() {
+            // Envoyer une requête AJAX au serveur pour déconnecter la session
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "deconnexion.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+
+                console.log(xhr.responseText);
+                // Recharger la page pour afficher les modifications
+                window.location.href="Accueil.php"   ;     
+
+
+                }
+            };
+            xhr.send();
+            });
+            </script>
 </div>
 
 <nav>
     <ul>
-      <!--  <li><i class="fa-solid fa-shop"></i></li>-->
         <li><a href="AccueilAcheteur.php"><big>Acceuil</a></li>
         <li><a href="ToutParcourirAcheteur.php">Tout Parcourir</a></li>
-        <li><a href="Notifications.php">Notifications</a></li>
-        <li><a href="VotreSelection.php"><font color="#00C2CB">Votre selection</font></a></li>
+        <li><a href="NotificationsAcheteur.php">Notifications</a></li>
+        <li><a href="VotreSelection.php"><font color="#00C2CB">Votre Selection</font></a></li>
         <li><a href="PageAcheteur.php">Votre Compte</a></li></big>
     </ul> 
 </nav>
@@ -132,41 +153,6 @@
             }
 ?>
 
-<!--
-    <h2>Première Selection</h2>
-
-
-
-
-
-
-    <img src="VoitureCollection.jpg" width="20%">
-
-    <h3>Principales Caractéristiques</h3>
-    <p>
-    Au Prix de : ... <br>
-Nombres de kilomètres : ... <br>
-Rareté : Classique / Haut de Gamme / Collection</p>
-    <br>
-
-    <h2>Deuxième Selection</h2>
-
-    <p>
-        Au Prix de : ... <br>
-    Nombres de kilomètres : ... <br>
-    Rareté : Classique / Haut de Gamme / Collection</p>
-        <br></p>
-    <br>
-
-    <h2>Troisième Notification</h2>
-
-    <p>Vous avez une demande de négociation pour votre annonce : ... 
-        <br>
-    Pour le montant de : ... à la place de : ...</p>
-
-
-
-        -->
   
     
 </div>

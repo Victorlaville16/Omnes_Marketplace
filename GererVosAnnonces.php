@@ -8,7 +8,34 @@
 
 <meta charset="utf-8" /> 
 <link rel="stylesheet" href="style.css" type = "text/css" />
+<style type="text/css">
 
+    .buttonSupprimer {
+      background-color: red;
+      border: none;
+      color: white;
+      padding: 20px 34px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 20px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    
+    .buttonAjouter {
+      background-color:#00C2CB ;
+      border: none;
+      color: white;
+      padding: 20px 34px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 20px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    </style>
 </head> 
 <body> 
 <div id="wrapper">
@@ -38,13 +65,11 @@
 
 <nav>
     <ul>
-      <!--  <li><i class="fa-solid fa-shop"></i></li>-->
 
-
-      <li><a href="Accueil.php"><big>Acceuil</a></li>
+      <li><a href="AccueilVendeur.php"><big>Acceuil</a></li>
         <li><a href="ToutParcourirVendeur.php">Tout Parcourir</a></li>
         <li><a href="Notifications.php">Notifications</a></li>
-        <li><a href="GererVosAnnonce"><font color="#00C2CB">Gérer Les Annonces</font></a></li>
+        <li><a href="GererVosAnnonces.php"><font color="#00C2CB">Gerer Vos Annonces</font></a></li>
         <li><a href="votreCompte.php">Votre Compte</a></li></big>
     </ul> 
 </nav>
@@ -58,25 +83,33 @@
       include('fonctions.php');
     $db = connectBD();
     $ID_utilisateur=$_SESSION['ID_utilisateur'];
+    $ID_vendeur=getIDVendeur($ID_utilisateur,$db);
 
- $request = $db->prepare("SELECT * FROM vehicules");// on verifie que l'id vendeur vaut bien id utilisateur pour récuperer que celle de l'admin
+ $request = $db->prepare("SELECT * FROM vehicules WHERE ID_vendeur = '$ID_vendeur'");// on verifie que l'id vendeur vaut bien id utilisateur pour récuperer que celle de l'admin
  $request->execute();
 
 
 
-        while($resultat=$request->fetch()){
-            echo "-" .$resultat['nom']. " ".$resultat['prix']. " ". "Description : ".$resultat['description'] ;
-            echo "<br>";       }
-
+ while($resultat=$request->fetch()){
+    getPhotoVehicule($resultat['ID_vehicule'], 1, $db);
+    echo "- Nom : " .$resultat['nom']. " / Prix : ".$resultat['prix']. " / Carburant : ".$resultat['carburant']." / Kilometrage :".$resultat['kilometrage']. " / Description : ".$resultat['description'] ;
+    echo "<br>";  
     ?>
+    <br>
+    <br>
+    <p>----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+    <?php
+    }
+
+?>
 
 
   <h1>Ajouter / Supprimer des annonces</h1>
     <p>
-   <a href="deposer_vendeur.php">Cliquer ICI pour ajouter une annonce</a>
+   <a href="deposer_vendeur.php" class="buttonAjouter">Cliquer ICI pour ajouter une annonce</a>
     <br>
     <br>
-    <a href="formulaireSuppression.php">Cliquer ICI pour supprimer une annonce</a>
+    <a href="formulaireSuppressionVehicules.php" class="buttonSupprimer">Cliquer ICI pour supprimer une annonce</a>
         </p>
   
     

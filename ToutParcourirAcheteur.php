@@ -55,9 +55,9 @@ include('fonctions.php');
     <nav>
       <ul>
         <!--  <li><i class="fa-solid fa-shop"></i></li>-->
-        <li><a href="Accueil.php"><big>Accueil</a></li>
-        <li><a href="ToutParcourir.php">Tout Parcourir</a></li>
-        <li><a href="Notifications.php">Notifications</a></li>
+        <li><a href="AccueilAcheteur.php"><big>Accueil</a></li>
+        <li><a href="ToutParcourirAcheteur.php"><font color="#00C2CB">Tout Parcourir</font></a></li>
+        <li><a href="NotificationsAcheteur.php">Notifications</a></li>
         <li><a href="VotreSelection.php">Votre Selection</a></li>
         <li><a href="votreCompte.php">Votre Compte</a></li></big>
       </ul>

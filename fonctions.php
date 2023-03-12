@@ -103,10 +103,10 @@
        return $result['nom'];
     }
     
-    function getTypeCompte(string $identifiant){
+    function getTypeCompte(int $ID_utilisateur){
         //Connexion BD
         $db = connectBD();
-        $request = $db->prepare("SELECT typeCompte FROM utilisateurs WHERE identifiant = '$identifiant'");
+        $request = $db->prepare("SELECT typeCompte FROM utilisateurs WHERE ID_utilisateur = '$ID_utilisateur'");
         $request->execute();
         $nom = $request->fetch();
         return $nom['typeCompte'];

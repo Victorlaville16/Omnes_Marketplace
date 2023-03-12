@@ -1,7 +1,6 @@
-<?php session_start(); ?>
-<?php
-include('fonctions.php');
-?>
+<?php session_start(); 
+include('fonctions.php');?>
+
 
 <!DOCTYPE html> 
 <head> 
@@ -23,8 +22,39 @@ include('fonctions.php');
 #photoProfil{
  height: 10px;
 }
-</style>
 
+#Page{
+  float: left;
+  padding-top: 10%;
+}
+
+.buttonSupprimer {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 20px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.buttonAjouter {
+  background-color:#00C2CB ;
+  border: none;
+  color: white;
+  padding: 20px 34px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+</style>
 </head> 
 <body> 
 <div id="wrapper">
@@ -71,97 +101,14 @@ include('fonctions.php');
 
     <div id="photoProfil">
     <?php
-
-
-            $db = connectBD();
-
-         /*   Création du conteneur, c'est-à-dire l'image qui va contenir la version
-            redimensionnée. Elle aura donc les nouvelles dimensions.
-            */
-           
-            /*
-              Importation de l'image source. Stockage dans une variable pour pouvoir
-              effectuer certaines actions.
-            */
-            $ID_utilisateur= $_SESSION['ID_utilisateur'];
-            $request = $db->prepare("SELECT photo FROM utilisateurs WHERE ID_utilisateur = '$ID_utilisateur'");
-            $request->execute();
-            $photo = $request->fetch();
-          //  echo '<img src="data:image/jpeg;base64,'.base64_encode( $photo['photo'] ).'"/>';
-
+     getPhotoProfil($_SESSION['ID_utilisateur']);
             
-
-           
-
-        //  if(list($source_largeur, $source_hauteur) = getimagesize($photo, array $image_info = null)){
-
-              /*
-                Calcul de la valeur dynamique en fonction des dimensions actuelles
-                de l'image et de la dimension fixe que nous avons précisée en argument.
-              */
-        
-              //  $nouv_hauteur = $source_hauteur*0.01;
-               // $nouv_largeur = $source_largeur*0.01;
-
-               // $image = imagecreatetruecolor($nouv_largeur, $nouv_hauteur);
-             
-
-          //  $source_image = imagecreatefromstring(file_get_contents($photo));
-            /*
-              Copie de l'image dans le nouveau conteneur en la rééchantillonant. Ceci
-              permet de ne pas perdre de qualité.
-            */
-          //  imagecopyresampled($image, $source_image, 0, 0, 0, 0, $nouv_largeur, $nouv_hauteur, $source_largeur, $source_hauteur);
-// Le fichier
-$filename = base64_encode( $photo['photo'] );
-
-// Définition de la largeur et de la hauteur maximale
-$width = 5;
-$height = 5;
-
-// Content type
-//header('Content-Type: image/jpeg');
-
-
-// Cacul des nouvelles dimensions
-list($width_orig, $height_orig) = getimagesize(imagejpeg($filename, NULL, 100));
-
-$ratio_orig = $width_orig/$height_orig;
-
-if ($width/$height > $ratio_orig) {
-   $width = $height*$ratio_orig;
-} else {
-   $height = $width/$ratio_orig;
-}
-
-// Redimensionnement
-$image_p = imagecreatetruecolor($width, $height);
-$image = imagecreatefromjpeg($filename);
-imagecopyresampled($image_p, $image, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
-
-// Affichage
-imagejpeg($image_p, null, 100);
-
-          //  echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/>';
-            /*
-              Si nous avons spécifié une sortie et qu'il s'agit d'un chemin valide (accessible
-              par le script)
-           /* $ID_utilisateur= $_SESSION['ID_utilisateur'];
-            $request = $db->prepare("SELECT photo FROM utilisateurs WHERE ID_utilisateur = '$ID_utilisateur'");
-            $request->execute();
-            $photo = $request->fetch();
-            resize_image($photo, 200, 200);
-
-           // $image_scaled = imagescale(0.8, $photo, 10%, 10%);
-    //echo '<img src="data:image/jpeg;base64,'.base64_encode( $image_scaled ).'"/>';*/
-
-   // getPhotoProfil($_SESSION['ID_utilisateur']);
 ?>
+
 </div> </h1>
     
 
-
-
+<div id="Page">
     <h1>Vos articles en ventes</h1>
     <h2>Enchères</h2>
     
@@ -178,8 +125,7 @@ imagejpeg($image_p, null, 100);
 
     <h1>Comptes Existants</h1>
 
-    <h2>Vendeur</h2>
-    <p> Compte : <br>
+    <h2>Vendeurs</h2>
     <?php
     $db = connectBD();
         $request = $db->prepare("SELECT * FROM utilisateurs WHERE typeCompte = '2'");
@@ -187,12 +133,13 @@ imagejpeg($image_p, null, 100);
         
 
         while($resultat=$request->fetch()){
-            echo "-" .$resultat['prenom']. " ".$resultat['nom']. " ". "Adresse mail : ".$resultat['mail'] ;
-            echo "<br>";       }
+          echo "-" .$resultat['prenom']. " ".$resultat['nom']." / ". "Adresse mail : ".$resultat['mail']." / "."Identifiant:"." ".$resultat['identifiant'];//ajout de l'identifiant car si meme prenom et meme nom alors probleme
+          echo "<br>";     
+            echo "<br>";
+            }
 
     ?>
-    <h2>Acheteur</h2>
-    <p> Compte : <br>
+    <h2>Acheteurs</h2>
     <?php
     $db = connectBD();
         $request = $db->prepare("SELECT * FROM utilisateurs WHERE typeCompte = '3'");
@@ -200,17 +147,18 @@ imagejpeg($image_p, null, 100);
         
 
         while($resultat=$request->fetch()){
-            echo "-" .$resultat['prenom']. " ".$resultat['nom']." ". "Adresse mail : ".$resultat['mail'] ;
-            echo "<br>";       }
+            echo "-" .$resultat['prenom']. " ".$resultat['nom']." / ". "Adresse mail : ".$resultat['mail']." / "."Identifiant:"." ".$resultat['identifiant'];//ajout de l'identifiant car si meme prenom et meme nom alors probleme
+            echo "<br>";     
+            echo "<br>";  }
 
     ?>
    
     <h1>Ajouter / Supprimer des comptes</h1>
     <p>
-   <a href="formulaire.php">Cliquer ICI pour ajouter des comptes</a>
+   <a href="formulaire.php" class="buttonAjouter">Cliquer ICI pour ajouter des comptes</a>
     <br>
     <br>
-    <a href="formulaireSuppression.php">Cliquer ICI pour Supprimer des comptes</a>
+    <a href="formulaireSuppression.php" class="buttonSupprimer">Cliquer ICI pour Supprimer des comptes</a>
         </p>
 
 
@@ -221,6 +169,7 @@ imagejpeg($image_p, null, 100);
 
   
     
+</div>
 </div>
 
 
@@ -238,68 +187,3 @@ imagejpeg($image_p, null, 100);
 
 </body> 
 </html>
-
-<?php
-function RedimensionnerImage($source, $type_value = "W", $new_value,  $compression = 70, $sortie = "") {
-  /*
-    Récupération des dimensions de l'image afin de vérifier
-    que ce fichier correspond bel et bien à un fichier image.
-    Stockage dans deux variables le cas échéant.
-  */
-  if( !( list($source_largeur, $source_hauteur) = @getimagesize($source) ) ) {
-    return false;
-  }
-  /*
-    Calcul de la valeur dynamique en fonction des dimensions actuelles
-    de l'image et de la dimension fixe que nous avons précisée en argument.
-  */
-  if( $type_value == "H" ) {
-    $nouv_hauteur = $new_value;
-    $nouv_largeur = ($new_value / $source_hauteur) * $source_largeur;
-  } else {
-    $nouv_largeur = $new_value;
-    $nouv_hauteur = ($new_value / $source_largeur) * $source_hauteur;
-  }
-  /*
- Création du conteneur, c'est-à-dire l'image qui va contenir la version
-  redimensionnée. Elle aura donc les nouvelles dimensions.
-  */
-  $image = imagecreatetruecolor($nouv_largeur, $nouv_hauteur);
-  /*
-    Importation de l'image source. Stockage dans une variable pour pouvoir
-    effectuer certaines actions.
-  */
-  $source_image = imagecreatefromstring(file_get_contents($source));
-  /*
-    Copie de l'image dans le nouveau conteneur en la rééchantillonant. Ceci
-    permet de ne pas perdre de qualité.
-  */
-  imagecopyresampled($image, $source_image, 0, 0, 0, 0, $nouv_largeur, $nouv_hauteur, $source_largeur, $source_hauteur);
-  /*
-    Si nous avons spécifié une sortie et qu'il s'agit d'un chemin valide (accessible
-    par le script)
-  */
-  if(strlen($sortie) > 0 and @touch($sortie)) {
-    /*
-     Enregistrement de l'image et affichage d'une notification à l'utilisateur.
-    */
-    imagejpeg($image, $sortie, $compression);
-    echo "Fichier sauvegardé.";
-  /*
-    Sinon...
-  */
-  } else {
-    /*
-     ...Nous indiquons au navigateur que nous affichons une image en définissant le
-     header et nous affichons l'image.
-    */
-    header("Content-Type: image/jpeg");
-    imagejpeg($image, NULL, $compression);
-  }
-  /*
-    Libération de la mémoire allouée aux deux images (sources et nouvelle).
-  */
-  imagedestroy($image);
-  imagedestroy($source_image);
-}
-?>
