@@ -31,10 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $request->execute();
 
 
-        header('Location: ToutParcourir.php');
+        header('Location: PageAcheteur.php');
     } else {
         //Informations invalides : faire pop up comme connexion utilisateur
-        header('Location: acheter.php');
+        setcookie('message', 'Informations de paiement incorrectes', time() + 3600, '/');
+
+        header('Location: acheter.php?ID_vehicule='.$ID_vehicule);
     }
 
 }

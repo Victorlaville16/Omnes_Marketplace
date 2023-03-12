@@ -1,4 +1,5 @@
 <?php session_start();
+include('fonctions.php');
  ?>
 <!DOCTYPE html> 
 <head> 
@@ -42,7 +43,7 @@
 <nav>
     <ul>
 
-      <li><a href="AccueilVendeur.php"><big>Acceuil</a></li>
+      <li><a href="AccueilVendeur.php"><big>Accueil</a></li>
         <li><a href="ToutParcourirVendeur.php"><font color="#00C2CB">Tout Parcourir</font></a></li>
         <li><a href="NotificationsVendeur.php">Notifications</a></li>
         <li><a href="GererVosAnnonces.php">Gerer vos annonces</a></li>
@@ -51,208 +52,168 @@
 </nav>
 
 <div id="content">
-    <h1 class="PremierTitre">Tout Parcourir</h1>
+    <h1>Liste des objets en vente</h1>
+    <form action="ToutParcourir.php" method="GET">
+    <label for="tri">Trier par :</label>
+    <select name="tri" id="tri">
+      <option value="nom">Nom</option>
+      <option value="prix">Prix</option>
+      <option value="date">Date de publication</option>
+      <option value="luxe">Voitures de luxe</option>
+      <option value="sport">Voitures de sport</option>
+      <option value="classique">Classique</option>
+    </select>
+    <input type="submit" value="Trier">
+  </form>
+      <?php //require_once('recupererproduit.php'); ?>
+      <table>
+        
+        <?php
+        // Connexion à la base de données
+        $dsn = "mysql:host=localhost;dbname=marketplace;charset=utf8mb4";
+        $username = "root";
+        $password = "";
 
-    <section class="carousel" aria-label="Gallery">
-  <ol class="carousel__viewport">
-    <li id="carousel__slide1"
-        tabindex="0"
-        class="carousel__slide">
-      <div class="carousel__snapper">
+        try {
+          $pdo = new PDO($dsn, $username, $password);
+          $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        <div class="overlay-image"><a href="PageVoiture.html">
- <img class="image" src="twingo4.jpg" width="100%" height="100%" />
- <div class="hover">
-  <div class="text">Prix de vente :...<br>
-  Nom du modèle : ....</div>
- </div>
-</div>
-       <!-- <img src="voiture1.png" width="100%" height="100%">-->
-         <!--<a href="#carousel__slide4"
-           class="carousel__prev">Go to last slide</a>
-        <a href="#carousel__slide2"
-           class="carousel__next">Go to next slide</a>-->
-      </div>
-    </li>
-    <li id="carousel__slide2"
-        tabindex="0"
-        class="carousel__slide">
-      <div class="carousel__snapper"> 
-        <div class="overlay-image"><a href="PageVoiture.html">
- <img class="image" src="twingo2.png.jpg" width="100%" height="100%" />
- <div class="hover">
+          // Requête SQL pour récupérer tous les objets de la base de données
+          $sql = "SELECT * FROM vehicules";
 
-  <div class="image2"><img class="image" src="twingo2.png.jpg" width="100%" height="100%" /></div> 
-  
-  <div class="text">Prix de vente :...<br>
-  Nom du modèle : ....</div>
- </div>
-</div>
-    <!--  <a href="#carousel__slide1"
-         class="carousel__prev">Go to previous slide</a>
-      <a href="#carousel__slide3"
-         class="carousel__next">Go to next slide</a>-->
-    </li>
-    <li id="carousel__slide3"
-        tabindex="0"
-        class="carousel__slide">
-      <div class="carousel__snapper"> 
-        <div class="overlay-image"><a href="PageVoiture.html">
- <img class="image" src="twingo3.jpg" width="100%" height="100%" />
- <div class="hover">
-  <div class="text">Prix de vente :...<br>
-  Nom du modèle : ....</div>
- </div>
-</div>
-    <!--  <a href="#carousel__slide2"
-         class="carousel__prev">Go to previous slide</a>
-      <a href="#carousel__slide4"
-         class="carousel__next">Go to next slide</a>-->
-    </li>
-  </ol>
-  <aside class="carousel__navigation">
-    <ol class="carousel__navigation-list">
-      <li class="carousel__navigation-item">
-        <a href="#carousel__slide1"
-           class="carousel__navigation-button">Go to slide 1</a>
-      </li>
-      <li class="carousel__navigation-item">
-        <a href="#carousel__slide2"
-           class="carousel__navigation-button">Go to slide 2</a>
-      </li>
-      <li class="carousel__navigation-item">
-        <a href="#carousel__slide3"
-           class="carousel__navigation-button">Go to slide 3</a>
-      </li>
-     <!-- <li class="carousel__navigation-item">
-        <a href="#carousel__slide4"
-           class="carousel__navigation-button">Go to slide 4</a>-->
-      </li>
-    </ol>
-  </aside>
-</section>
+          // Tri des résultats si le paramètre "tri" est présent dans l'URL
+          $orderBy = "date_ajout DESC";
+          $whereClause = "";
+          if (isset($_GET["tri"])) {
+            switch ($_GET["tri"]) {
+              case "nom":
+                $orderBy = "nom ASC";
+                $whereClause = "";
+                break;
+              case "prix":
+                $orderBy = "prix ASC";
+                $whereClause = "";
+                break;
+              case "date":
+                $orderBy = "date_ajout DESC";
+                $whereClause = "";
+                break;
+              case "luxe":
+                $whereClause = "WHERE gamme = 'luxe'";
+                $orderBy = "date_ajout DESC";
+                break;
+              case "sport":
+                $whereClause = "WHERE gamme = 'sport'";
+                $orderBy = "date_ajout DESC";
+                break;
+              case "classique":
+                $whereClause = "WHERE gamme = 'ville'";
+                $orderBy = "date_ajout DESC";
+                break;
+            }
+          }
+
+          $sql = "SELECT * FROM vehicules ".$whereClause." ORDER BY ".$orderBy;
+
+          // Exécuter la requête
+          $stmt = $pdo->query($sql);
+
+          // Vérifier si la requête a renvoyé des résultats
+          if ($stmt->rowCount() > 0) {
+            // Afficher la table HTML avec les résultats
+            $index = 1;
+            $lien="";
+            while ($row = $stmt->fetch()) {
+              if($row['ID_acheteur']==0){
+                if($row['methodeVente']== 'immediate'){
+                  $lien = "pagevente.php?ID_vehicule=" .$row['ID_vehicule'];
+                }elseif($row['methodeVente']== 'encheres'){
+                  $lien = "encheres.php?ID_vehicule=" .$row['ID_vehicule'];
+                  
+                }
+
+              ?>
+              <section class="carrousel" aria-label="Gallery">
+                <ol class="carrousel__viewport">
+                  <li id=<?php 'carrousel_slide' . $index ?> tabindex="0" class="carrousel__slide">
+                    <div class="carrousel__snapper">
+
+                      <div class="overlay-image"><a href="<?php echo $lien ?>">
+
+                          <?php  getPhotoVehicule($row['ID_vehicule'], 1, $pdo); ?>
 
 
+                          <div class="hover">
+                            <div class="text">Prix de vente :
+                              <?php echo getPrixVehicule($row['ID_vehicule'], $pdo) . " $"; ?><br>
+                              Nom du modèle :
+                              <?php echo getNomVehicule($row['ID_vehicule'], $pdo); ?>
+                            </div>
+                          </div>
+                      </div>
 
-    <section class="carousel" aria-label="Gallery">
-  <ol class="carousel__viewport">
-    <li id="carousel__slide4"
-        tabindex="0"
-        class="carousel__slide">
-      <div class="carousel__snapper">
-       
-        <div class="overlay-image"><a href="PageVoiture.html">
- <img class="image" src="megane1.jpg" width="100%" height="100%" />
- <div class="hover">
-  <div class="text">Prix de vente :...<br>
-  Nom du modèle : ....</div>
- </div>
-</div>
-    </li>
-    <li id="carousel__slide5"
-        tabindex="0"
-        class="carousel__slide">
-      <div class="carousel__snapper"> 
-        <div class="overlay-image"><a href="PageVoiture.html">
- <img class="image" src="megane2.jpg" width="100%" height="100%" />
- <div class="hover">
-  <div class="text">Prix de vente :...<br>
-  Nom du modèle : ....</div>
- </div>
-</div>
-    </li>
-    <li id="carousel__slide6"
-        tabindex="0"
-        class="carousel__slide">
-      <div class="carousel__snapper">
-        <div class="overlay-image"><a href="PageVoiture.html">
- <img class="image" src="megane3.jpg" width="100%" height="100%" />
- <div class="hover">
-  <div class="text">Prix de vente :...<br>
-  Nom du modèle : ....</div>
- </div>
-</div>
-    </li>
-  </ol>
-  <aside class="carousel__navigation">
-    <ol class="carousel__navigation-list">
-      <li class="carousel__navigation-item">
-        <a href="#carousel__slide4"
-           class="carousel__navigation-button">Go to slide 1</a>
-      </li>
-      <li class="carousel__navigation-item">
-        <a href="#carousel__slide5"
-           class="carousel__navigation-button">Go to slide 2</a>
-      </li>
-      <li class="carousel__navigation-item">
-        <a href="#carousel__slide6"
-           class="carousel__navigation-button">Go to slide 3</a>
-      </li>
-      </li>
-    </ol>
-  </aside>
-</section>
+
+                    </div>
+                  </li>
+                  <?php $index = $index + 1 ?>
+                  <li id=<?php 'carrousel_slide' . $index ?> tabindex="0" class="carrousel__slide">
+                    <div class="carrousel__snapper">
+                      <div class="overlay-image"><a href="<<?php echo $lien ?>">
+                          <?php  getPhotoVehicule($row['ID_vehicule'], 2, $pdo); ?>
+
+
+                          <div class="hover">
 
 
 
-    <section class="carousel" aria-label="Gallery">
-  <ol class="carousel__viewport">
-    <li id="carousel__slide7"
-        tabindex="0"
-        class="carousel__slide">
-      <div class="carousel__snapper">
+                            <div class="text">Prix de vente :
+                              <?php echo getPrixVehicule($row['ID_vehicule'], $pdo) . " $"; ?><br>
+                              Nom du modèle :
+                              <?php echo getNomVehicule($row['ID_vehicule'], $pdo); ?>
+                            </div>
+                          </div>
+                      </div>
 
-        <div class="overlay-image"><a href="PageVoiture.html">
- <img class="image" src="ferrari1.jpg" width="100%" height="100%" />
- <div class="hover">
-  <div class="text">Prix de vente :...<br>
-  Nom du modèle : ....</div>
- </div>
-</div>
+                  </li>
+                  <?php $index = $index + 1 ?>
+                  <li id=<?php 'carrousel_slide' . $index ?> tabindex="0" class="carrousel__slide">
+                    <div class="carrousel__snapper">
+                      <div class="overlay-image"><a href="<?php echo $lien ?>">
 
-    </li>
-    <li id="carousel__slide8"
-        tabindex="0"
-        class="carousel__slide">
-      <div class="carousel__snapper">  
-        <div class="overlay-image"><a href="PageVoiture.html">
- <img class="image" src="ferrari2.jpg" width="100%" height="100%" />
- <div class="hover">
-  <div class="text">Prix de vente :...<br>
-  Nom du modèle : ....</div></div>
-</div>
-    </li>
-    <li id="carousel__slide9"
-        tabindex="0"
-        class="carousel__slide">
-      <div class="carousel__snapper">    <div class="overlay-image"><a href="PageVoiture.html">
- <img class="image" src="ferrari3.jpg" width="100%" height="100%" />
- <div class="hover">
-  <div class="text">Prix de vente :...<br>
-  Nom du modèle : ....</div></div>
-</div>
-    </li>
-  </ol>
-  <aside class="carousel__navigation">
-    <ol class="carousel__navigation-list">
-      <li class="carousel__navigation-item">
-        <a href="#carousel__slide7"
-           class="carousel__navigation-button">Go to slide 1</a>
-      </li>
-      <li class="carousel__navigation-item">
-        <a href="#carousel__slide8"
-           class="carousel__navigation-button">Go to slide 2</a>
-      </li>
-      <li class="carousel__navigation-item">
-        <a href="#carousel__slide9"
-           class="carousel__navigation-button">Go to slide 3</a>
-      </li>
-      </li>
-    </ol>
-  </aside>
-</section>
-    
-</div>
+                          <?php  getPhotoVehicule($row['ID_vehicule'], 3, $pdo); ?>
+
+                          <div class="hover">
+                            <div class="text">Prix de vente :
+                              <?php echo getPrixVehicule($row['ID_vehicule'], $pdo) . " $"; ?><br>
+                              Nom du modèle :
+                              <?php echo getNomVehicule($row['ID_vehicule'], $pdo); ?>
+                            </div>
+                          </div>
+                      </div>
+
+                  </li>
+                </ol>
+               
+              </section>
+              <br>
+              <?php
+              $index = $index + 1;
+              }
+            }
+          } else {
+            echo "Aucun objet trouvé.";
+          }
+        } catch (PDOException $e) {
+          echo "Connexion à la base de données impossible: " . $e->getMessage();
+        }
+
+        // Fermer la connexion à la base de données
+        unset($pdo);
+        ?>
+
+      </table>
+
+    </div>
 
 <div id="footer">
     <div id="texteFooter">Copyright &copy; 2023, Omnes MarketPlace<br /> 

@@ -123,20 +123,7 @@ include('fonctions.php');
 
             </li>
           </ol>
-          <aside class="carrousel__navigation">
-            <ol class="carrousel__navigation-list">
-              <li class="carrousel__navigation-item">
-                <a href="<?php '#carrousel_slide' . ($index - 2) ?>" class="carrousel__navigation-button">Go to slide 1</a>
-              </li>
-              <li class="carrousel__navigation-item">
-                <a href="<?php '#carrousel_slide' . ($index - 1) ?>" class="carrousel__navigation-button">Go to slide 2</a>
-              </li>
-              <li class="carrousel__navigation-item">
-                <a href="<?php '#carrousel_slide' . $index ?>" class="carrousel__navigation-button">Go to slide 3</a>
-              </li>
-              </li>
-            </ol>
-          </aside>
+          
         </section>
         <br>
         <?php

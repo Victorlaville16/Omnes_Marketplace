@@ -70,7 +70,7 @@ $ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur'])
         <nav>
             <ul>
                 <!--  <li><i class="fa-solid fa-shop"></i></li>-->
-                <li><a href="AccueilAcheteur.php"><big>Acceuil</a></li>
+                <li><a href="AccueilAcheteur.php"><big>Accueil</a></li>
                 <li><a href="ToutParcourirAcheteur.php">Tout Parcourir</a></li>
                 <li><a href="NotificationsAcheteur.php">Notifications</a></li>
                 <li><a href="VotreSelection.php">Votre Selection</a></li>

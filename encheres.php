@@ -90,7 +90,7 @@ if (isset($_COOKIE['message'])) {
     while ($produit = $resultat->fetch()) {
       echo '<div class="produit">';
       echo '<h2>' . $produit['nom'] . '</h2>';
-      afficherCarrouselVehicule($produit['ID_vehicule'], $conn);
+      afficherCarrouselVehicule($produit['ID_vehicule'], $conn, 'encheres');
       echo '<p>Description : ' . $produit['description'] . '</p>';
       echo '<p>Prixactuel : ' . $produit['prix'] . '</p>';
 

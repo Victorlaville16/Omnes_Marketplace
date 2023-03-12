@@ -66,9 +66,9 @@
 <nav>
     <ul>
 
-      <li><a href="AccueilVendeur.php"><big>Acceuil</a></li>
+      <li><a href="AccueilVendeur.php"><big>Accueil</a></li>
         <li><a href="ToutParcourirVendeur.php">Tout Parcourir</a></li>
-        <li><a href="Notifications.php">Notifications</a></li>
+        <li><a href="NotificationsVendeur.php">Notifications</a></li>
         <li><a href="GererVosAnnonces.php"><font color="#00C2CB">Gerer Vos Annonces</font></a></li>
         <li><a href="votreCompte.php">Votre Compte</a></li></big>
     </ul> 

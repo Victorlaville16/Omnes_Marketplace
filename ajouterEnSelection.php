@@ -3,8 +3,8 @@ session_start();
 
 include('fonctions.php');
 
-    
-    $db = connectBD();
+
+$db = connectBD();
 
 
 $ID_vehicule = $_GET['ID_vehicule'];
@@ -17,31 +17,34 @@ $sql = "INSERT INTO favoris (user_id, article_id) VALUES ($userId, $articleId)";
 $result = mysqli_query($connexion, $sql);
 */
 
-$request = $db->prepare ("SELECT * FROM selection WHERE ID_vehicule = $ID_vehicule AND ID_acheteur=$acheteurId");
+$request = $db->prepare("SELECT * FROM selection WHERE ID_vehicule = $ID_vehicule and ID_acheteur=$acheteurId");
 $request->execute();
-$resultat=$request->fetch();
+$resultat = $request->fetch();
 
 
 
-if($resultat=null){
+if ($resultat) {
 
-  $request = $db->prepare ("INSERT INTO selection (ID_vehicule,ID_Acheteur) VALUES ('$ID_vehicule','$acheteurId')");
-$request->execute();
+  setcookie('message', 'Vous avez déjà ajouté ce véhicule dans vos sélections', time() + 3600, '/');
 
-  
- }
- 
+
+} else {
+  $request = $db->prepare("INSERT INTO selection (ID_vehicule,ID_Acheteur) VALUES ('$ID_vehicule','$acheteurId')");
+  $request->execute();
+
+}
+
 header("Location: ToutParcourirAcheteur.php");
- exit;
+exit;
 
 
 /*
 if ($result) {
-  // La requête a réussi, retourner une réponse 200 OK
-  http_response_code(200);
+// La requête a réussi, retourner une réponse 200 OK
+http_response_code(200);
 } else {
-  // La requête a échoué, retourner une réponse 500 Internal Server Error
-  http_response_code(500);
+// La requête a échoué, retourner une réponse 500 Internal Server Error
+http_response_code(500);
 }*/
 
 ?>

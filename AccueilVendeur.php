@@ -137,7 +137,7 @@
 
     <h1>Présentation</h1>
 
-    <p>Bienvenue sur la page d'acceuil de notre site de vente en ligne de voiture neuf ou occasion</p>
+    <p>Bienvenue sur la page d'accueil de notre site de vente en ligne de voiture neuf ou occasion</p>
   
     
 </div>

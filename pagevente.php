@@ -74,7 +74,7 @@ include('fonctions.php'); ?>
 			<h2>Négociation impossible</h2>
 			
 			<a href="acheter.php?ID_vehicule=<?php echo $row['ID_vehicule']; ?>">
-			<button>Acheter maintenant</button>
+			<button>Acheter maintenant</button></a>
 
 			<a href="ToutParcourirAcheteur.php">Retour à la liste des objets</a>
 

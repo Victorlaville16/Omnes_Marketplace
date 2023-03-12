@@ -1,6 +1,16 @@
 <?php 
 session_start();
-
+if (isset($_COOKIE['message'])) {
+    $message = $_COOKIE['message'];
+    // Afficher le message à l'utilisateur
+	?>
+	<script type="text/javascript">
+	alert('<?php echo $message?>');
+	</script>
+	<?php
+    // Supprimer le cookie
+    setcookie('message', '', time() - 3600, '/');
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,5 +55,7 @@ session_start();
                     <button type="submit" name="submit" class="btn">Valider</button>
                     
                 </form>
+                <a href="pagevente.php?id=<?php echo $ID_vehicule ?>">
+			<button>Page précédente</button></a>
 </body>
 </html>

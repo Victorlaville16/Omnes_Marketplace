@@ -40,7 +40,7 @@
 
 <nav>
     <ul>
-    <li><a href="AccueilVendeur.php"><big>Acceuil</a></li>
+    <li><a href="AccueilVendeur.php"><big>Accueil</a></li>
         <li><a href="ToutParcourirVendeur.php">Tout Parcourir</a></li>
         <li><a href="NotificationsVendeur.php"><font color="#00C2CB">Notifications</font></a></li>
         <li><a href="GererVosAnnonces.php">Gerer vos annonces</a></li>
