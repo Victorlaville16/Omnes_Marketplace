@@ -23,7 +23,7 @@ $resultat=$request->fetch();
 
 
 
-if($resultat=null){
+if(!($resultat=null)){
 
   $request = $db->prepare ("INSERT INTO selection (ID_vehicule,ID_Acheteur) VALUES ('$ID_vehicule','$acheteurId')");
 $request->execute();

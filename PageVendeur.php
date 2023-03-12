@@ -12,6 +12,7 @@ include('fonctions.php');
 <meta charset="utf-8" /> 
 <link rel="stylesheet" href="style.css" type = "text/css" />
 <style type="text/css">
+    
 #PremierTitre{
     width: 100%;
   height: 10%;
