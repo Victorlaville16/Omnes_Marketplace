@@ -11,8 +11,25 @@ include('fonctions.php');
 <script src="https://kit.fontawesome.com/fad59fd69b.js" crossorigin="anonymous"></script>
 <meta charset="utf-8" /> 
 <link rel="stylesheet" href="style.css" type = "text/css" />
+<style type="text/css">
+#PremierTitre{
+    width: 100%;
+  height: 10%;
+  margin: 0;
+  padding-left: 15px;
+}
 
+   
+#photoProfil{
+ height: 10px;
+}
 
+#Page{
+  float: left;
+  padding-top: 10%;
+}
+
+</style>
 </head> 
 <body> 
 <div id="wrapper">
@@ -51,13 +68,22 @@ include('fonctions.php');
 </nav>
 
 <div id="content">
-    <h1 class="PremierTitre">Bienvenue sur votre compte : <?php 
+    <h1 class="PremierTitre">Bienvenue sur votre compte :  
     
     
-    echo " ".getPrenom($_SESSION['ID_utilisateur']) ." ".getNom($_SESSION['ID_utilisateur']) ?> </h1>
+    <?php
+    echo " ".getPrenom($_SESSION['ID_utilisateur']) ." ".getNom($_SESSION['ID_utilisateur']) ;?>
 
+    <div id="photoProfil">
+    <?php
+     getPhotoProfil($_SESSION['ID_utilisateur']);
+            
+?>
+
+</div> </h1>
     
 
+<div id="Page">
 
 
     <h1>Vos articles en ventes</h1>
