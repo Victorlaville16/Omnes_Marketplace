@@ -1,13 +1,19 @@
 <?php 
-    function afficherCarrouselVehicule(int $ID_vehicule, $db){
+    function afficherCarrouselVehicule(int $ID_vehicule, $db, string $methodeVente){
         $index = 1;
+          if($methodeVente== 'immediate'){
+            $lien = "pagevente.php?ID_vehicule=" .$ID_vehicule;
+          }elseif($methodeVente== 'encheres'){
+            $lien = "encheres.php?ID_vehicule=" .$ID_vehicule;
+            
+          }
         ?>
         <section class="carrousel" aria-label="Gallery">
           <ol class="carrousel__viewport">
             <li id=<?php 'carrousel_slide' . $index ?> tabindex="0" class="carrousel__slide">
               <div class="carrousel__snapper">
 
-                <div class="overlay-image"><a href="PageVoiture.html">
+                <div class="overlay-image"><a href="<?php echo $lien ?>">
                     <?php getPhotoVehicule($ID_vehicule, 1, $db); ?>
 
                   
@@ -18,7 +24,7 @@
             <?php $index = $index + 1 ?>
             <li id=<?php 'carrousel_slide' . $index ?> tabindex="0" class="carrousel__slide">
               <div class="carrousel__snapper">
-                <div class="overlay-image"><a href="PageVoiture.html">
+                <div class="overlay-image"><a href="<?php echo $lien ?>">
                     <?php getPhotoVehicule($ID_vehicule, 2, $db); ?>
 
 
@@ -29,7 +35,7 @@
             <?php $index = $index + 1 ?>
             <li id=<?php 'carrousel_slide' . $index ?> tabindex="0" class="carrousel__slide">
               <div class="carrousel__snapper">
-                <div class="overlay-image"><a href="PageVoiture.html">
+                <div class="overlay-image"><a href="<?php echo $lien ?>">
 
                     <?php getPhotoVehicule($ID_vehicule, 3, $db); ?>
 

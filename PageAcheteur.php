@@ -264,7 +264,7 @@ $ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur'])
             $request->execute();
             $result = $request->fetch();
             if ($result) {
-                afficherCarrouselVehicule($result['ID_vehicule'], $db);
+                afficherCarrouselVehicule($result['ID_vehicule'], $db, 'immediate');
                 $infosVendeur = getInfosVendeur($result['ID_vendeur'], $db);
                 ?>
                 <h3>Description de l'objet</h3>
@@ -283,17 +283,52 @@ $ID_acheteur = getIDAcheteur($_SESSION['ID_utilisateur'])
                     <button>Annuler l'achat</button>
                 </a>
                 <?php
-            }else{
+            } else {
                 ?>
                 <p>Rien à déclarer</p>
                 <?php
             }
             ?>
+            <h1>Les enchères où vous participez</h1>
+            <?php
+            /*
+            $ID_utilisateur = $_SESSION['ID_utilisateur'];
+            $db = connectBD();
+            $request = $db->prepare("SELECT * FROM vehicules WHERE ID = $ID_utilisateur and methodeVente='encheres'");
+            $request->execute();
+            $result = $request->fetch();
+            if ($result) {
+                afficherCarrouselVehicule($result['id_produit'], $db, 'encheres');
+                $infosVendeur = getInfosVendeur($result['ID_vendeur'], $db);
+                ?>
+                <h3>Description de l'objet</h3>
+                <p>
+                    <?php echo $result["description"]; ?>
+                </p>
+                <h3>Prix</h3>
+                <p>
+                    <?php echo $result["prix"]; ?> €
+                </p>
+                <h3>Vendeur</h3>
+                <p>
+                    <?php echo $infosVendeur["prenom"] . " " . $infosVendeur['nom']; ?>
+                </p>
+                <a href="annulerAchat.php?ID_vehicule=<?php echo $result['ID_vehicule']; ?>">
+                    <button>Annuler l'achat</button>
+                </a>
+                <?php
+            } else {
+                ?>
+                <p>Rien à déclarer</p>
+                <?php
+            }
+            */
+            ?>
 
 
 
 
-            
+
 
 
 

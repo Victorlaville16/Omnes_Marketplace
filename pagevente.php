@@ -54,7 +54,7 @@ session_start();
 			<h1>Vente de
 				<?php echo $row["nom"]; ?>
 			</h1>
-			<?php afficherCarrouselVehicule($row['ID_vehicule'], $pdo) ?>
+			<?php afficherCarrouselVehicule($row['ID_vehicule'], $pdo, 'immediate') ?>
 			<h2>Description de l'objet</h2>
 			<p>
 				<?php echo $row["description"]; ?>
@@ -63,6 +63,8 @@ session_start();
 			<p>
 				<?php echo $row["prix"]; ?> €
 			</p>
+			<h2>Négociation impossible</h2>
+			
 			<a href="acheter.php?ID_vehicule=<?php echo $row['ID_vehicule']; ?>">
 			<button>Acheter maintenant</button>
 			</a>

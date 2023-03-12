@@ -41,6 +41,9 @@ include('fonctions.php');
       <option value="nom">Nom</option>
       <option value="prix">Prix</option>
       <option value="date">Date de publication</option>
+      <option value="luxe">Voitures de luxe</option>
+      <option value="sport">Voitures de sport</option>
+      <option value="classique">Classique</option>
     </select>
     <input type="submit" value="Trier">
   </form>
@@ -62,20 +65,37 @@ include('fonctions.php');
 
           // Tri des résultats si le paramètre "tri" est présent dans l'URL
           $orderBy = "date_ajout DESC";
+          $whereClause = "";
           if (isset($_GET["tri"])) {
             switch ($_GET["tri"]) {
               case "nom":
                 $orderBy = "nom ASC";
+                $whereClause = "";
                 break;
               case "prix":
                 $orderBy = "prix ASC";
+                $whereClause = "";
                 break;
               case "date":
+                $orderBy = "date_ajout DESC";
+                $whereClause = "";
+                break;
+              case "luxe":
+                $whereClause = "WHERE gamme = 'luxe'";
+                $orderBy = "date_ajout DESC";
+                break;
+              case "sport":
+                $whereClause = "WHERE gamme = 'sport'";
+                $orderBy = "date_ajout DESC";
+                break;
+              case "classique":
+                $whereClause = "WHERE gamme = 'ville'";
                 $orderBy = "date_ajout DESC";
                 break;
             }
           }
-          $sql .= " ORDER BY " . $orderBy;
+
+          $sql = "SELECT * FROM vehicules ".$whereClause." ORDER BY ".$orderBy;
 
           // Exécuter la requête
           $stmt = $pdo->query($sql);
@@ -84,8 +104,15 @@ include('fonctions.php');
           if ($stmt->rowCount() > 0) {
             // Afficher la table HTML avec les résultats
             $index = 1;
+            $lien="";
             while ($row = $stmt->fetch()) {
               if($row['ID_acheteur']==0){
+                if($row['methodeVente']== 'immediate'){
+                  $lien = "pagevente.php?ID_vehicule=" .$row['ID_vehicule'];
+                }elseif($row['methodeVente']== 'encheres'){
+                  $lien = "encheres.php?ID_vehicule=" .$row['ID_vehicule'];
+                  
+                }
 
               ?>
               <section class="carrousel" aria-label="Gallery">
@@ -93,7 +120,7 @@ include('fonctions.php');
                   <li id=<?php 'carrousel_slide' . $index ?> tabindex="0" class="carrousel__slide">
                     <div class="carrousel__snapper">
 
-                      <div class="overlay-image"><a href="pagevente.php?ID_vehicule=<?php echo $row['ID_vehicule'] ?>">
+                      <div class="overlay-image"><a href="<?php echo $lien ?>">
 
                           <?php  getPhotoVehicule($row['ID_vehicule'], 1, $pdo); ?>
 
@@ -113,7 +140,7 @@ include('fonctions.php');
                   <?php $index = $index + 1 ?>
                   <li id=<?php 'carrousel_slide' . $index ?> tabindex="0" class="carrousel__slide">
                     <div class="carrousel__snapper">
-                      <div class="overlay-image"><a href="pagevente.php?ID_vehicule=<?php echo $row['ID_vehicule'] ?>">
+                      <div class="overlay-image"><a href="<<?php echo $lien ?>">
                           <?php  getPhotoVehicule($row['ID_vehicule'], 2, $pdo); ?>
 
 
@@ -133,7 +160,7 @@ include('fonctions.php');
                   <?php $index = $index + 1 ?>
                   <li id=<?php 'carrousel_slide' . $index ?> tabindex="0" class="carrousel__slide">
                     <div class="carrousel__snapper">
-                      <div class="overlay-image"><a href="pagevente.php?ID_vehicule=<?php echo $row['ID_vehicule'] ?>">
+                      <div class="overlay-image"><a href="<?php echo $lien ?>">
 
                           <?php  getPhotoVehicule($row['ID_vehicule'], 3, $pdo); ?>
 

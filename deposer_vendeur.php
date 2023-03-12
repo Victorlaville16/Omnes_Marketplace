@@ -180,6 +180,17 @@ nav a:hover{
             <td><input type="number" name="prix"> </td><br><br>
         </tr>
         <tr>
+            <td>Gamme</td><br>
+            <td>
+                <select name="gamme" id="gamme">
+                <option value="">----------GAMME----------</option>
+                <option value="luxe">Luxe</option>
+                <option value="sport">Sport</option>
+                <option value="ville">Ville</option>
+            </select><br><br>
+            </td>
+        </tr>
+        <tr>
             <td>Kilometrage</td><br>
             <td><input type="number" name="kilometrage"> </td><br><br>
         </tr>
