@@ -39,7 +39,7 @@
 
 <nav>
     <ul>
-        <li><a href="AccueilAcheteur.php"><big>Acceuil</a></li>
+        <li><a href="AccueilAcheteur.php"><big>Accueil</a></li>
         <li><a href="ToutParcourirAcheteur.php">Tout Parcourir</a></li>
         <li><a href="NotificationsAcheteur.php">Notifications</a></li>
         <li><a href="VotreSelection.php"><font color="#00C2CB">Votre Selection</font></a></li>
@@ -49,7 +49,7 @@
 
 <div id="content">
 
-    <h1 class="PremierTitre">Vos Sélections</h1>
+    <h1 class="PremierTitre">Vos Selections</h1>
 
     <?php
     include('fonctions.php');

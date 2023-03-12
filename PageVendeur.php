@@ -60,7 +60,7 @@ include('fonctions.php');
 <nav>
     <ul>
       <!--  <li><i class="fa-solid fa-shop"></i></li>-->
-        <li><a href="AccueilVendeur.php"><big>Acceuil</a></li>
+        <li><a href="AccueilVendeur.php"><big>Accueil</a></li>
         <li><a href="ToutParcourirVendeur.php">Tout Parcourir</a></li>
         <li><a href="NotificationsVendeur.php">Notifications</a></li>
         <li><a href="GererVosAnnonces.php">Gerer vos annonces</a></li>

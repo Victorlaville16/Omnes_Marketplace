@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 include('fonctions.php'); ?>
@@ -25,6 +26,7 @@ include('fonctions.php'); ?>
 		
 		include('afficherCarrouselVehicule.php');
 		// Récupérer la clé primaire de l'objet sélectionné
+
 		$ID_vehicule = $_GET["id"];
 		$ID_utilisateur = $_SESSION['ID_utilisateur'];
 		$ID_acheteur = getIDAcheteur($ID_utilisateur);
@@ -56,13 +58,24 @@ include('fonctions.php'); ?>
 		?>
 		<section id="produit">
 
-			<h1>Vente de <?php echo $row["nom"]; ?></h1>
-			<?php afficherCarrouselVehicule($row['ID_vehicule'], $pdo) ?>
+			<h1>Vente de
+				<?php echo $row["nom"]; ?>
+			</h1>
+			<?php afficherCarrouselVehicule($row['ID_vehicule'], $pdo, 'immediate') ?>
+
 			<h2>Description de l'objet</h2>
-			<p><?php echo $row["description"]; ?></p>
+			<p>
+				<?php echo $row["description"]; ?>
+			</p>
 			<h2>Prix</h2>
-			<p><?php echo $row["prix"]; ?> €</p>
-			<button>Acheter maintenant</button>
+			<p>
+				<?php echo $row["prix"]; ?> €
+			</p>
+			<h2>Négociation impossible</h2>
+			
+			<a href="acheter.php?ID_vehicule=<?php echo $row['ID_vehicule']; ?>">
+			<button>Acheter maintenant</button></a>
+
 			<a href="ToutParcourirAcheteur.php">Retour à la liste des objets</a>
 
 
